@@ -310,5 +310,41 @@
 
 <footer>© Enricozon 2023</footer>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="text" id="search-button" placeholder="Cerca per nome..." oninput="search()">
+
+<script>
+    var products = [
+        { name: "Sigma"},
+        { name: "Prodotto 2"},
+        { name: "Prodotto 3"},
+        
+    ];
+
+    function search() {
+        var query = document.getElementById("search-input").value.toLowerCase();
+        var resultsContainer = document.getElementById("results");
+        resultsContainer.innerHTML = ""; // Pulisci i risultati precedenti
+
+        products.forEach(function (product) {
+            if (product.name.toLowerCase().includes(query)) {
+                var productElement = document.createElement("div");
+                productElement.classList.add("product");
+                productElement.innerHTML = "<h3>" + product.name + "</h3><p>" + product.description + "</p>";
+                resultsContainer.appendChild(productElement);
+            }
+        });
+    }
+</script>
+
+
+
 </body>
 </html>
