@@ -3,5 +3,5 @@ Coming Soon...
 
 Made by:
 
-[cranci](https://github.com/cranci1), [enriccio](https://github.com/enriccio104), Tanoshi & [Cholito](https://github.com/SuperFico2100)
+[cranci](https://github.com/cranci1), [enriccio](https://github.com/enriccio104), Tanoshi, [Cholito](https://github.com/SuperFico2100) & [TheProcionCatIta](https://github.com/TheProcionCatIta)
 
