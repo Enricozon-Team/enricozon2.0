@@ -102,6 +102,7 @@ footer {
 
 p {
     color: #fff;
+    text-decoration: none;
 }
 
 .image-container {
@@ -117,4 +118,8 @@ p {
 
 .image-description {
     margin-top: 1px;
+}
+
+a{
+    text-decoration: none;
 }
