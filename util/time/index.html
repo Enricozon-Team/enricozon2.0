@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enricozon Time Machine</title>
+    <link rel="icon" href="logo.jpeg">
+    <style>
+        body {
+            background-color: #202020;  
+            text-align: center;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        #container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 450px;
+            margin: 100px auto;
+        }
+
+        button {
+            background-color: rgba(30, 134, 125, 1);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: rgba(12, 63, 64, 1);
+        }
+
+        #returnButton {
+            background-color: red;
+            margin-top: 40px;
+        }
+        #returnButton:hover {
+            background-color: #7f353a;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Benvenuto nella Macchina del Tempo di Enricozon</h1>
+        <p>Seleziona una destinazione:</p>
+        <button onclick="navigateTo('https://enricozon-team.github.io/enricozon-beta')">Open-Beta 2023</button>
+        <button onclick="navigateTo('https://enricozon-team.github.io/enricozon-hw')">Halloween 2023</button>
+
+        <button id="returnButton" onclick="navigateTo('#')">Torna all'era attuale</button>
+
+    </div>
+
+
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
