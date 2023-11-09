@@ -2,11 +2,16 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function redirectToLink() {
+            window.location.href = 'https://enricozon.cranci.xyz';
+        }
+    </script>
 </head>
 <body>
     <div class="login-container">
         <h2>Login Enricozon</h2>
-        <form>
+        <form onsubmit="redirectToLink(); return false;">
             <input type="text" id="username" placeholder="username" required>
             <input type="password" id="password" placeholder="password" required>
             <button type="submit">Login</button>
