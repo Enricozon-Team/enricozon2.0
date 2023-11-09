@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu a Tendina Laterale</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<button class="open-btn" onclick="openNav()">☰</button>
+
+<div class="sidebar" id="mySidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+    <a href="/">Home</a>
+    <a href="util/about/index.html">About</a>
+    <a href="util/login/index.html">Login</a>
+    <a href="https://instagram.com/enricozon" target="_blank">Instagram</a>
+    <a href="https://whatsapp.com/channel/0029Va8G3gGAu3aM27dYtF1V"_blank>WhatsApp</a>
+    <a href="mailto:enricozon@cranci.xyz">Contattaci</a>
+</div>
+
+<div class="content">
+
+        <img class="img1" src="immagini/enricozon.png">
+
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Cerca un prodotto...">
+            <button type="submit" id="search-button">Cerca</button>
+        </div>
+
+
+    <div class="image-container">
+        <img class="img2" src="immagini/8.jpg">
+        <div class="image-description">
+            <p>Description: Beautiful landscape</p>
+            <p>Price: $50.00</p>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img class="img2" src="immagini/9.jpg">
+        <div class="image-description">
+            <p>Description: Amazing artwork</p>
+            <p>Price: $75.00</p>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img class="img2" src="immagini/10.jpg">
+        <div class="image-description">
+            <p>Description: Vintage vibes</p>
+            <p>Price: $30.00</p>
+        </div>
+    </div>
+    
+    <!-- Add more image containers as needed -->
+
+    <div id="chi-siamo"></div>
+    <div id="coming-soon"></div>
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("mySidebar").style.paddingLeft = "20px";
+        document.getElementById("mySidebar").style.transition = "0.5s";
+        document.getElementsByClassName("content")[0].style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("mySidebar").style.paddingLeft = "0";
+        document.getElementsByClassName("content")[0].style.marginLeft= "0";
+    }
+
+    function showText(text) {
+        var contentDiv = document.getElementById("chi-siamo") || document.getElementById("coming-soon");
+        contentDiv.innerHTML = "<p>" + text + "</p>";
+    }
+</script>
+
+<footer>© enricozon 2023</footer>
+
+</body>
+</html>
