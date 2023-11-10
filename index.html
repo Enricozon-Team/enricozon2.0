@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enricozon 2.0</title>
     <link rel="icon" href="immagini/loghi/logo.jpeg">
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
@@ -24,13 +22,12 @@
 </div>
 
 <div class="content">
+    <img class="img1" src="immagini/loghi/enricozonxmas.png">
 
-        <img class="img1" src="immagini/loghi/enricozonxmas.png">
-
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Cerca un prodotto...">
-            <button type="submit" id="search-button">Cerca</button>    
-        </div>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Cerca un prodotto..." oninput="filterProducts()">
+        <button type="submit" id="search-button">Cerca</button>
+    </div>
 
 
     <div class="image-container">
@@ -282,7 +279,6 @@
         </a>
         </div>
     </div>
-    <!-- Add more image containers as needed -->
 
     <div id="chi-siamo"></div>
     <div id="coming-soon"></div>
@@ -306,12 +302,28 @@
         var contentDiv = document.getElementById("chi-siamo") || document.getElementById("coming-soon");
         contentDiv.innerHTML = "<p>" + text + "</p>";
     }
+
+    function filterProducts() {
+        var input, filter, container, images, description, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        container = document.getElementsByClassName("content")[0];
+        images = container.getElementsByClassName("image-container");
+
+        for (i = 0; i < images.length; i++) {
+            description = images[i].getElementsByClassName("image-description")[0];
+            txtValue = description.textContent || description.innerText;
+
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                images[i].style.display = "";
+            } else {
+                images[i].style.display = "none";
+            }
+        }
+    }
 </script>
 
 <footer>© Enricozon 2023</footer>
-
-
-
 
 </body>
 </html>
