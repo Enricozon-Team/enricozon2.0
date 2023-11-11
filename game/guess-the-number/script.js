@@ -6,26 +6,26 @@ function checkGuess() {
     const message = document.getElementById('message');
 
     if (guessInput.value === '') {
-        message.innerText = 'Please enter a number';
+        message.innerText = 'Perfavore metti un numero';
         return;
     }
 
     const playerGuess = parseInt(guessInput.value);
 
     if (isNaN(playerGuess) || playerGuess < 1 || playerGuess > 100) {
-        message.innerText = 'Please enter a valid number between 1 and 100';
+        message.innerText = 'Perfavore metti un numero valido tra 1 e 100';
         return;
     }
 
     attempts++;
 
     if (playerGuess === secretNumber) {
-        message.innerText = `Congratulations! You guessed the number in ${attempts} attempts.`;
+        message.innerText = `Congratulazioni hai indovinato il numero in ${attempts} tentativi.`;
         resetGame();
     } else if (playerGuess < secretNumber) {
-        message.innerText = 'Too low. Try again!';
+        message.innerText = 'Troppo basso. Riprova';
     } else {
-        message.innerText = 'Too high. Try again!';
+        message.innerText = 'Troppo alto. Riprova!';
     }
 
     guessInput.value = '';
@@ -38,5 +38,5 @@ function resetGame() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const message = document.getElementById('message');
-    message.innerText = 'Try to guess the number between 1 and 100:';
+    message.innerText = 'Prova ad indovinare un numero tra 1 e 100:';
 });
