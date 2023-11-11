@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enricozon Tris</title> <!-- Modificato il titolo -->
+    <title>Enricozon Tris</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #363636; /* Cambiato da #f0f0f0 a #363636 */
+            background-color: #363636;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column; /* Aggiunto per centrare la scritta */
+            flex-direction: column;
         }
 
         h1 {
-            color: #fff; /* Aggiunto il colore del testo */
+            color: #fff;
         }
 
         #game-container {
@@ -50,7 +50,7 @@
         #result {
             margin-top: 20px;
             font-size: 18px;
-            color: #fff; /* Aggiunto il colore del testo */
+            color: #fff;
         }
 
         #mode {
@@ -79,7 +79,7 @@
 </head>
 <body>
 
-<h1>Enricozon Tris</h1> <!-- Aggiunta la scritta -->
+<h1>Enricozon Tris</h1>
 
 <div id="mode">
     <label>Scegli la modalità di gioco:</label>
@@ -143,10 +143,11 @@
             gameBoard[index] = currentPlayer;
             updateCellView(index);
 
-            if (checkWinner()) {
-                resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+            const winner = checkWinner();
+            if (winner) {
+                resultDisplay.textContent = `${winner === "tie" ? "Pareggio" : winner} ha vinto!`;
             } else if (isBoardFull()) {
-                resultDisplay.textContent = "È un pareggio!";
+                resultDisplay.textContent = "Pareggio!";
             } else {
                 currentPlayer = currentPlayer === "X" ? "O" : "X";
                 if (gameMode === "computer" && currentPlayer === "O") {
@@ -166,7 +167,7 @@
 
         if (emptyCells.length > 0) {
             let computerMove;
-            
+
             switch (difficultyLevel) {
                 case "easy":
                     computerMove = getRandomMove(emptyCells);
@@ -187,10 +188,11 @@
             gameBoard[computerMove] = currentPlayer;
             updateCellView(computerMove);
 
-            if (checkWinner()) {
-                resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+            const winner = checkWinner();
+            if (winner) {
+                resultDisplay.textContent = `${winner === "tie" ? "Pareggio" : winner} ha vinto!`;
             } else if (isBoardFull()) {
-                resultDisplay.textContent = "È un pareggio!";
+                resultDisplay.textContent = "Pareggio!";
             } else {
                 currentPlayer = currentPlayer === "X" ? "O" : "X";
             }
@@ -267,6 +269,21 @@
         return gameBoard.every(cell => cell !== "");
     }
 
+    function checkDraw() {
+        const drawCombinations = [
+            [0, 1, 2, 3, 4, 5, 6, 7, 8], // All cells are filled
+            // Aggiungi altre combinazioni se necessario
+        ];
+
+        for (const combination of drawCombinations) {
+            if (combination.every(index => gameBoard[index] !== "")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     function checkWinner() {
         const winningCombinations = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -274,15 +291,15 @@
             [0, 4, 8], [2, 4, 6] // Diagonals
         ];
 
+        if (checkDraw()) {
+            return "tie";
+        }
+
         for (const combination of winningCombinations) {
             const [a, b, c] = combination;
             if (gameBoard[a] !== "" && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
                 return gameBoard[a];
             }
-        }
-
-        if (!gameBoard.includes("")) {
-            return "tie";
         }
 
         return null;
@@ -307,4 +324,5 @@
 
 </body>
 </html>
+
 
