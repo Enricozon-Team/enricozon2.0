@@ -59,11 +59,13 @@ body {
 .img2{
     margin: 20px;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .img2:hover{
-    box-shadow: 0 0 10px cyan, 0 0 40px cyan, 0 0 80px cyan;
+    box-shadow: 0 0 10px rgb(11, 251, 251), 0 0 40px cyan, 0 0 80px cyan;
     transition-delay: 0.02s;
+    transform: scale(1.1);
 }
 
 .search-container {
