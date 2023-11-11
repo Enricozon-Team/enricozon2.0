@@ -58,7 +58,30 @@
             }
         });
     
-        // Aggiungi la logica per far muovere il computer
+        function makeComputerMove() {
+    const emptyCells = gameBoard.reduce((acc, cell, index) => {
+        if (cell === "") {
+            acc.push(index);
+        }
+        return acc;
+    }, []);
+
+    if (emptyCells.length > 0) {
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        const computerMove = emptyCells[randomIndex];
+        gameBoard[computerMove] = currentPlayer;
+        updateCellView(computerMove);
+        
+        if (checkWinner()) {
+            resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+        } else if (isBoardFull()) {
+            resultDisplay.textContent = "È un pareggio!";
+        } else {
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+        }
+    }
+}
+
         function makeComputerMove() {
             // Tua logica per far muovere il computer
             // Assicurati che il computer faccia una mossa dopo ogni mossa del giocatore
@@ -69,9 +92,7 @@
     
     </script>
     
-    </body>
-    </html>
+  
     
-
 </body>
 </html>
