@@ -59,11 +59,13 @@ body {
 .img2{
     margin: 20px;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.img2:hover{
-    box-shadow: 0 0 10px cyan, 0 0 40px cyan, 0 0 80px cyan;
+.img2:hover {
+    box-shadow: 0 0 10px rgb(11, 251, 251), 0 0 40px cyan, 0 0 80px cyan;
     transition-delay: 0.02s;
+    transform: scale(1.1);
 }
 
 .search-container {
@@ -105,6 +107,10 @@ p {
     text-decoration: none;
 }
 
+s {
+    color: #fff;
+}
+
 .image-container {
     display: inline-block;
     margin: 10px;
@@ -123,3 +129,44 @@ p {
 a{
     text-decoration: none;
 }
+
+.product-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e67a00;
+    color: #fff;
+    font-size: .8rem;
+    line-height: 1.5;
+    height: 1.625rem;
+    width: 100%;
+    max-width: 5.5rem;
+    padding-right: .5rem;
+    position: relative;
+    z-index: 1;
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    top: 2.5rem;
+    left: 0.9rem;
+    border-radius: 0.2rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  .product-badge.choice {
+    background-color: #23303e;
+    color: #fff;
+    max-width: 8rem;
+    margin-right: .25rem;
+  }
+  
+  .product-badge.choice>span {
+    color: #e58f34;
+  }
+  
+  .product-badge.choice sup {
+    position: relative;
+    font-size: .5rem;
+  }
+  
+  .grid-prime {
+    flex-wrap: wrap;
+  }
