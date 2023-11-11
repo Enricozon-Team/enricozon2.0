@@ -3,27 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Tris</title>
+    <title>Enricozon Tris</title> <!-- Modificato il titolo -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #363636; /* Cambiato da #f0f0f0 a #363636 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Aggiunto per centrare la scritta */
+        }
+
+        h1 {
+            color: #fff; /* Aggiunto il colore del testo */
+        }
+
+        #game-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            font-size: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .cell:hover {
+            background-color: #eee;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff; /* Aggiunto il colore del testo */
+        }
+
+        #mode {
+            margin-bottom: 20px;
+        }
+
+        #restart-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #restart-button:hover {
+            background-color: #45a049;
+        }
+
+        #difficulty {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="game-container">
-        <h1>Tris</h1>
-        <div id="board" class="board">
-            <div class="cell" onclick="makeMove(0)"></div>
-            <div class="cell" onclick="makeMove(1)"></div>
-            <div class="cell" onclick="makeMove(2)"></div>
-            <div class="cell" onclick="makeMove(3)"></div>
-            <div class="cell" onclick="makeMove(4)"></div>
-            <div class="cell" onclick="makeMove(5)"></div>
-            <div class="cell" onclick="makeMove(6)"></div>
-            <div class="cell" onclick="makeMove(7)"></div>
-            <div class="cell" onclick="makeMove(8)"></div>
-        </div>
-        <p id="message"></p>
-        <button onclick="resetGame()">Reset Game</button>
-    </div>
-    <script src="script.js"></script>
+
+<h1>Enricozon Tris</h1> <!-- Aggiunta la scritta -->
+
+<div id="mode">
+    <label>Scegli la modalità di gioco:</label>
+    <select id="game-mode">
+        <option value="friend">Con un amico</option>
+        <option value="computer">Contro il computer</option>
+    </select>
+</div>
+
+<div id="difficulty" style="display:none;">
+    <label>Scegli la difficoltà:</label>
+    <select id="difficulty-level">
+        <option value="easy">Facile</option>
+        <option value="medium">Medio</option>
+        <option value="hard">Difficile</option>
+        <option value="impossible">Impossibile</option>
+    </select>
+</div>
+
+<div id="game-container"></div>
+<div id="result"></div>
+<button id="restart-button" onclick="resetGame()">Ricomincia la partita</button>
+
+<script>
+    let currentPlayer = "X";
+    let gameBoard = ["", "", "", "", "", "", "", "", ""];
+    let gameMode = "friend";
+    let difficultyLevel = "easy";
+
+    const cells = document.getElementById("game-container");
+    const resultDisplay = document.getElementById("result");
+    const difficultySelect = document.getElementById("difficulty");
+
+    document.getElementById("game-mode").addEventListener("change", function () {
+        resetGame();
+        gameMode = this.value;
+        if (gameMode === "computer") {
+            difficultySelect.style.display = "block";
+        } else {
+            difficultySelect.style.display = "none";
+        }
+    });
+
+    document.getElementById("difficulty-level").addEventListener("change", function () {
+        difficultyLevel = this.value;
+    });
+
+    function createBoard() {
+        for (let i = 0; i < 9; i++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.dataset.index = i;
+            cell.addEventListener("click", handleCellClick);
+            cells.appendChild(cell);
+        }
+    }
+
+    function handleCellClick() {
+        const index = this.dataset.index;
+        if (gameBoard[index] === "" && !isGameOver()) {
+            gameBoard[index] = currentPlayer;
+            updateCellView(index);
+
+            if (checkWinner()) {
+                resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+            } else if (isBoardFull()) {
+                resultDisplay.textContent = "È un pareggio!";
+            } else {
+                currentPlayer = currentPlayer === "X" ? "O" : "X";
+                if (gameMode === "computer" && currentPlayer === "O") {
+                    makeComputerMove();
+                }
+            }
+        }
+    }
+
+    function makeComputerMove() {
+        const emptyCells = gameBoard.reduce((acc, cell, index) => {
+            if (cell === "") {
+                acc.push(index);
+            }
+            return acc;
+        }, []);
+
+        if (emptyCells.length > 0) {
+            let computerMove;
+            
+            switch (difficultyLevel) {
+                case "easy":
+                    computerMove = getRandomMove(emptyCells);
+                    break;
+                case "medium":
+                    computerMove = getRandomMove(emptyCells);
+                    break;
+                case "hard":
+                    computerMove = getBestMove(gameBoard, currentPlayer).index;
+                    break;
+                case "impossible":
+                    computerMove = getBestMove(gameBoard, currentPlayer).index;
+                    break;
+                default:
+                    break;
+            }
+
+            gameBoard[computerMove] = currentPlayer;
+            updateCellView(computerMove);
+
+            if (checkWinner()) {
+                resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+            } else if (isBoardFull()) {
+                resultDisplay.textContent = "È un pareggio!";
+            } else {
+                currentPlayer = currentPlayer === "X" ? "O" : "X";
+            }
+        }
+    }
+
+    function getRandomMove(emptyCells) {
+        return emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    }
+
+    function getBestMove(board, player) {
+        // Minimax algorithm implementation
+        let bestScore = -Infinity;
+        let bestMove;
+
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === "") {
+                board[i] = player;
+                let score = minimax(board, 0, false);
+                board[i] = "";
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMove = i;
+                }
+            }
+        }
+
+        return { index: bestMove, score: bestScore };
+    }
+
+    function minimax(board, depth, isMaximizing) {
+        const scores = {
+            X: -1,
+            O: 1,
+            tie: 0
+        };
+
+        let result = checkWinner();
+        if (result !== null) {
+            return scores[result];
+        }
+
+        if (isMaximizing) {
+            let bestScore = -Infinity;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === "") {
+                    board[i] = "O";
+                    let score = minimax(board, depth + 1, false);
+                    board[i] = "";
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+            return bestScore;
+        } else {
+            let bestScore = Infinity;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === "") {
+                    board[i] = "X";
+                    let score = minimax(board, depth + 1, true);
+                    board[i] = "";
+                    bestScore = Math.min(score, bestScore);
+                }
+            }
+            return bestScore;
+        }
+    }
+
+    function isGameOver() {
+        return resultDisplay.textContent !== "";
+    }
+
+    function isBoardFull() {
+        return gameBoard.every(cell => cell !== "");
+    }
+
+    function checkWinner() {
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6] // Diagonals
+        ];
+
+        for (const combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (gameBoard[a] !== "" && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                return gameBoard[a];
+            }
+        }
+
+        if (!gameBoard.includes("")) {
+            return "tie";
+        }
+
+        return null;
+    }
+
+    function resetGame() {
+        gameBoard = ["", "", "", "", "", "", "", "", ""];
+        currentPlayer = "X";
+        resultDisplay.textContent = "";
+        cells.innerHTML = "";
+        createBoard();
+    }
+
+    function updateCellView(index) {
+        const cell = document.querySelector(`[data-index="${index}"]`);
+        cell.textContent = currentPlayer;
+        cell.style.cursor = "not-allowed";
+    }
+
+    createBoard();
+</script>
 
 </body>
 </html>
+
