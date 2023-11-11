@@ -16,5 +16,5 @@ function playGame(playerChoice) {
         result = 'Hai perso!';
     }
 
-    document.getElementById('risultati').innerHTML = `Hai scelto ${playerChoice}. Il computer ha scelto ${computerChoice}. ${result}`;
+    document.getElementById('Risultato').innerHTML = `Hai scelto ${playerChoice}. Il computer ha scelto ${computerChoice}. ${result}`;
 }
