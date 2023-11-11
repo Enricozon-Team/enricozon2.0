@@ -107,6 +107,10 @@ p {
     text-decoration: none;
 }
 
+s {
+    color: #fff;
+}
+
 .image-container {
     display: inline-block;
     margin: 10px;
