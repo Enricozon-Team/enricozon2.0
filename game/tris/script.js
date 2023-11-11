@@ -32,13 +32,13 @@ function checkWinner() {
     for (const pattern of winPatterns) {
         const [a, b, c] = pattern;
         if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-            endGame(`${currentPlayer} wins!`);
+            endGame(`${currentPlayer} vince!`);
             return;
         }
     }
 
     if (!gameBoard.includes('')) {
-        endGame('It\'s a tie!');
+        endGame('Pareggio!');
     }
 }
 
