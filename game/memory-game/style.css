@@ -22,7 +22,7 @@ body {
 .card {
     width: 100px;
     height: 100px;
-    background-color: lightblue;
+    background-color: cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,4 +30,28 @@ body {
     cursor: pointer;
 }
 
+button{
+    position: absolute;
+  background-color: #202020;
+  top: 90%;
+  padding: 15px 30px;
+  color: cyan;
+  text-transform: uppercase;
+  text-decoration-line: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+  cursor: pointer;
+  
+  
+            align-items: center;
+            justify-content: center;
+            
+            margin: 0;
+}
+button:hover {
+    box-shadow: 0 0 10px rgb(11, 251, 251), 0 0 40px cyan, 0 0 80px cyan;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+}
 
