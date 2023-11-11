@@ -17,8 +17,13 @@
     top: 2.88rem;
     left: 1.25rem;
     border-radius: 0.2rem;
+    transition: transform 0.3s ease-in-out;
   }
-  
+
+  .product-badge:hover{
+    transform: scale(1.1);
+  }
+
   .product-badge.choice {
     background-color: #23303e;
     color: #fff;
