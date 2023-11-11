@@ -1,5 +1,5 @@
 function playGame(playerChoice) {
-    const choices = ['sasso', 'carta', 'forbice'];
+    const choices = ['Sasso', 'Carta', 'Forbice'];
     const computerChoice = choices[Math.floor(Math.random() * 3)];
 
     let result;
@@ -16,5 +16,5 @@ function playGame(playerChoice) {
         result = 'Hai perso!';
     }
 
-    document.getElementById('Risultato').innerHTML = `Hai scelto ${playerChoice}. Il computer ha scelto ${computerChoice}. ${result}`;
+    document.getElementById('result').innerHTML = `Hai scelto ${playerChoice}. Il computer ha scelto ${computerChoice}. ${result}`;
 }
