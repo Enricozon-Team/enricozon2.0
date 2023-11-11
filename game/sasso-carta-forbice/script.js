@@ -7,9 +7,9 @@ function playGame(playerChoice) {
     if (playerChoice === computerChoice) {
         result = "E' un pareggio!";
     } else if (
-        (playerChoice === 'sasso' && computerChoice === 'forbice') ||
-        (playerChoice === 'carta' && computerChoice === 'sasso') ||
-        (playerChoice === 'forbice' && computerChoice === 'carta')
+        (playerChoice === 'Sasso' && computerChoice === 'Forbice') ||
+        (playerChoice === 'Carta' && computerChoice === 'Sasso') ||
+        (playerChoice === 'Forbice' && computerChoice === 'Carta')
     ) {
         result = 'Hai vinto!';
     } else {
