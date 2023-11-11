@@ -1,11 +1,11 @@
 function playGame(playerChoice) {
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = ['sasso', 'carta', 'forbice'];
     const computerChoice = choices[Math.floor(Math.random() * 3)];
 
     let result;
 
     if (playerChoice === computerChoice) {
-        result = "It's a draw!";
+        result = "E' un pareggio!";
     } else if (
         (playerChoice === 'rock' && computerChoice === 'forbice') ||
         (playerChoice === 'paper' && computerChoice === 'sasso') ||
