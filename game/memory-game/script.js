@@ -50,7 +50,7 @@ function checkMatch() {
     canSelect = true;
 
     if (document.querySelectorAll('.card:not([style*="background-color"])').length === 0) {
-        alert('Congratulations! You won!');
+        alert('Congratulazioni, hai vinto!');
         resetGame();
     }
 }

@@ -7,14 +7,14 @@ function playGame(playerChoice) {
     if (playerChoice === computerChoice) {
         result = "It's a draw!";
     } else if (
-        (playerChoice === 'rock' && computerChoice === 'scissors') ||
-        (playerChoice === 'paper' && computerChoice === 'rock') ||
-        (playerChoice === 'scissors' && computerChoice === 'paper')
+        (playerChoice === 'rock' && computerChoice === 'forbice') ||
+        (playerChoice === 'paper' && computerChoice === 'sasso') ||
+        (playerChoice === 'scissors' && computerChoice === 'carta')
     ) {
-        result = 'You win!';
+        result = 'Hai vinto!';
     } else {
-        result = 'You lose!';
+        result = 'Hai perso!';
     }
 
-    document.getElementById('result').innerHTML = `You chose ${playerChoice}. Computer chose ${computerChoice}. ${result}`;
+    document.getElementById('result').innerHTML = `Hai scelto ${playerChoice}. Il computer ha scelto ${computerChoice}. ${result}`;
 }
