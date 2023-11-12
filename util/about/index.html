@@ -10,6 +10,7 @@
             font-family: Arial, sans-serif;
             background-color: #202020;
             margin: 0; 
+            text-align: center;
         }
         .container {
             display: flex;
@@ -41,9 +42,67 @@
             font-size: 16px;
             color: #FFFFFF;
         }
+        .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+.sidebar a {
+    padding: 8px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.content {
+    margin-left: 0;
+    transition: margin-left 0.5s;
+    padding: 16px;
+}
+
+.open-btn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+
     </style>
 </head>
 <body>
+    <button class="open-btn" onclick="openNav()">☰</button>
+
+<div class="sidebar" id="mySidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">x</a>
+    <a href="https://enricozon.cranci.xyz">Home</a>
+    <a href="util/login/index.html">Login</a>
+    <a href="https://instagram.com/enricozon">Instagram</a>
+    <a href="https://whatsapp.com/channel/0029Va8G3gGAu3aM27dYtF1V">WhatsApp</a>
+    <a href="mailto:enricozon@cranci.xyz">Contattaci</a>
+    <a href="util/time/index.html">Time Machine</a>
+    <a href="util/bottoni/bottoni.html">Link Utili</a>
+    <a href="game/index.html">MiniGame</a>
+</div>
     <div class="container">
         <div class="image">
             <img src="enricozons.png" alt="Logo enricozon">
@@ -55,5 +114,44 @@
             </p>
         </div>
     </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("mySidebar").style.paddingLeft = "20px";
+            document.getElementById("mySidebar").style.transition = "0.5s";
+            document.getElementsByClassName("content")[0].style.marginLeft = "250px";
+        }
+    
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.paddingLeft = "0";
+            document.getElementsByClassName("content")[0].style.marginLeft= "0";
+        }
+    
+        function showText(text) {
+            var contentDiv = document.getElementById("chi-siamo") || document.getElementById("coming-soon");
+            contentDiv.innerHTML = "<p>" + text + "</p>";
+        }
+    
+        function filterProducts() {
+            var input, filter, container, images, description, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            container = document.getElementsByClassName("content")[0];
+            images = container.getElementsByClassName("image-container");
+    
+            for (i = 0; i < images.length; i++) {
+                description = images[i].getElementsByClassName("image-description")[0];
+                txtValue = description.textContent || description.innerText;
+    
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    images[i].style.display = "";
+                } else {
+                    images[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    
 </body>
 </html>

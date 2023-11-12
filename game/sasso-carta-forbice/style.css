@@ -1,24 +1,32 @@
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #202020;
 }
 
 .game-container {
     text-align: center;
 }
 
-.choices button {
-    margin: 10px;
-    padding: 10px 20px;
+.choices {
+    margin-top: 20px;
+}
+
+button {
     font-size: 16px;
+    margin: 5px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 18px;
+h1 {
+    color: #fff;
+}
+
+p {
+    color: #fff;
 }
