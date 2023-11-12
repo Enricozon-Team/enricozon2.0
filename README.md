@@ -1,6 +1,11 @@
 # Enricozon 2.0
 Coming Soon...
 
+The items/photos in this website are used for entertainment purposes only. 
+
+If you don't want a photo or item of your propriety being displayed in this site, please contact us at [enricozon@cranci.xyz](mailto:enricozon@cranci.xyz)
+
+
 Made by:
 
 [cranci](https://github.com/cranci1), [enriccio](https://github.com/enriccio104), Tanoshi, [Cholito](https://github.com/SuperFico2100) & [TheProcionCatIta](https://github.com/TheProcionCatIta)
