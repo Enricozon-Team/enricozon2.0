@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #202020;
     text-align: center;
+    color: white;
 }
 
 .login-container {
@@ -39,4 +40,48 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+.sidebar a {
+    padding: 8px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.content {
+    margin-left: 0;
+    transition: margin-left 0.5s;
+    padding: 16px;
+}
+
+.open-btn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    position: fixed;
+    left: 10px;
+    top: 10px;
 }
