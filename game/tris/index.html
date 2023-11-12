@@ -145,7 +145,7 @@
 
             const winner = checkWinner();
             if (winner) {
-                resultDisplay.textContent = `${winner === "tie" ? "Pareggio" : winner} ha vinto!`;
+                resultDisplay.textContent = `${winner === "tie" ? "Pareggio" : winner}`;
             } else if (isBoardFull()) {
                 resultDisplay.textContent = "Pareggio!";
             } else {
