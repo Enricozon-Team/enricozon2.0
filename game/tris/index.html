@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,270 +78,272 @@
         }
     </style>
 </head>
+
 <body>
 
-<h1>Enricozon Tris</h1>
+    <h1>Enricozon Tris</h1>
 
-<div id="mode">
-    <label>Scegli la modalità di gioco:</label>
-    <select id="game-mode">
-        <option value="friend">Con un amico</option>
-        <option value="computer">Contro il computer</option>
-    </select>
-</div>
+    <div id="mode">
+        <label>Scegli la modalità di gioco:</label>
+        <select id="game-mode">
+            <option value="friend">Con un amico</option>
+            <option value="computer">Contro il computer</option>
+        </select>
+    </div>
 
-<div id="difficulty" style="display:none;">
-    <label>Scegli la difficoltà:</label>
-    <select id="difficulty-level">
-        <option value="easy">Facile</option>
-        <option value="medium">Medio</option>
-        <option value="hard">Difficile</option>
-        <option value="impossible">Impossibile</option>
-    </select>
-</div>
+    <div id="difficulty" style="display:none;">
+        <label>Scegli la difficoltà:</label>
+        <select id="difficulty-level">
+            <option value="easy">Facile</option>
+            <option value="medium">Medio</option>
+            <option value="hard">Difficile</option>
+            <option value="impossible">Impossibile</option>
+        </select>
+    </div>
 
-<div id="game-container"></div>
-<div id="result"></div>
-<button id="restart-button" onclick="resetGame()">Ricomincia la partita</button>
+    <div id="game-container"></div>
+    <div id="result"></div>
+    <button id="restart-button" onclick="resetGame()">Ricomincia la partita</button>
 
-<script>
-    let currentPlayer = "X";
-    let gameBoard = ["", "", "", "", "", "", "", "", ""];
-    let gameMode = "friend";
-    let difficultyLevel = "easy";
+    <script>
+        let currentPlayer = "X";
+        let gameBoard = ["", "", "", "", "", "", "", "", ""];
+        let gameMode = "friend";
+        let difficultyLevel = "easy";
 
-    const cells = document.getElementById("game-container");
-    const resultDisplay = document.getElementById("result");
-    const difficultySelect = document.getElementById("difficulty");
+        const cells = document.getElementById("game-container");
+        const resultDisplay = document.getElementById("result");
+        const difficultySelect = document.getElementById("difficulty");
 
-    document.getElementById("game-mode").addEventListener("change", function () {
-        resetGame();
-        gameMode = this.value;
-        if (gameMode === "computer") {
-            difficultySelect.style.display = "block";
-        } else {
-            difficultySelect.style.display = "none";
-        }
-    });
-
-    document.getElementById("difficulty-level").addEventListener("change", function () {
-        difficultyLevel = this.value;
-    });
-
-    function createBoard() {
-        for (let i = 0; i < 9; i++) {
-            const cell = document.createElement("div");
-            cell.classList.add("cell");
-            cell.dataset.index = i;
-            cell.addEventListener("click", handleCellClick);
-            cells.appendChild(cell);
-        }
-    }
-
-    function handleCellClick() {
-        const index = this.dataset.index;
-        if (gameBoard[index] === "" && !isGameOver()) {
-            gameBoard[index] = currentPlayer;
-            updateCellView(index);
-
-            if (checkWinner()) {
-                resultDisplay.textContent = `${currentPlayer} ha vinto!`;
-            } else if (isBoardFull()) {
-                resultDisplay.textContent = "Pareggio!";
+        document.getElementById("game-mode").addEventListener("change", function () {
+            resetGame();
+            gameMode = this.value;
+            if (gameMode === "computer") {
+                difficultySelect.style.display = "block";
             } else {
-                currentPlayer = currentPlayer === "X" ? "O" : "X";
-                if (gameMode === "computer" && currentPlayer === "O") {
-                    makeComputerMove();
-                }
+                difficultySelect.style.display = "none";
+            }
+        });
+
+        document.getElementById("difficulty-level").addEventListener("change", function () {
+            difficultyLevel = this.value;
+        });
+
+        function createBoard() {
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("cell");
+                cell.dataset.index = i;
+                cell.addEventListener("click", handleCellClick);
+                cells.appendChild(cell);
             }
         }
-    }
 
-    function makeComputerMove() {
-        const emptyCells = gameBoard.reduce((acc, cell, index) => {
-            if (cell === "") {
-                acc.push(index);
-            }
-            return acc;
-        }, []);
+        function handleCellClick() {
+            const index = this.dataset.index;
+            if (gameBoard[index] === "" && !isGameOver()) {
+                gameBoard[index] = currentPlayer;
+                updateCellView(index);
 
-        if (emptyCells.length > 0) {
-            let computerMove;
-            
-            switch (difficultyLevel) {
-                case "easy":
-                    computerMove = getRandomMove(emptyCells);
-                    break;
-                case "medium":
-                    computerMove = getMediumMove(emptyCells);
-                    break;
-                case "hard":
-                    computerMove = getHardMove(emptyCells);
-                    break;
-                case "impossible":
-                    computerMove = getImpossibleMove(emptyCells);
-                    break;
-                default:
-                    break;
-            }
-
-            gameBoard[computerMove] = currentPlayer;
-            updateCellView(computerMove);
-
-            if (checkWinner()) {
-                resultDisplay.textContent = `${currentPlayer} ha vinto!`;
-            } else if (isBoardFull()) {
-                resultDisplay.textContent = "Pareggio!";
-            } else {
-                currentPlayer = currentPlayer === "X" ? "O" : "X";
-            }
-        }
-    }
-
-    function getRandomMove(emptyCells) {
-        return emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    }
-
-    function getMediumMove(emptyCells) {
-        // Scegli una mossa casuale in modalità media
-        if (Math.random() > 0.5) {
-            return getRandomMove(emptyCells);
-        } else {
-            // Oppure scegli la mossa migliore in modalità media
-            return getBestMove(gameBoard, currentPlayer).index;
-        }
-    }
-
-    function getHardMove(emptyCells) {
-        // Scegli sempre la mossa migliore in modalità difficile
-        return getBestMoveLimitedDepth(gameBoard, currentPlayer, 2).index;
-    }
-
-    function getImpossibleMove(emptyCells) {
-        // Scegli sempre la mossa migliore in modalità impossibile
-        return getBestMoveLimitedDepth(gameBoard, currentPlayer, 3).index;
-    }
-
-    function getBestMoveLimitedDepth(board, player, depth) {
-        // Minimax algorithm with limited depth implementation
-        let bestScore = -Infinity;
-        let bestMove;
-
-        for (let i = 0; i < board.length; i++) {
-            if (board[i] === "") {
-                board[i] = player;
-                let score = minimaxLimitedDepth(board, 0, false, depth);
-                board[i] = "";
-
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMove = i;
+                if (checkWinner()) {
+                    resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+                } else if (isBoardFull()) {
+                    resultDisplay.textContent = "Pareggio!";
+                } else {
+                    currentPlayer = currentPlayer === "X" ? "O" : "X";
+                    if (gameMode === "computer" && currentPlayer === "O") {
+                        makeComputerMove();
+                    }
                 }
             }
         }
 
-        return { index: bestMove, score: bestScore };
-    }
+        function makeComputerMove() {
+            const emptyCells = gameBoard.reduce((acc, cell, index) => {
+                if (cell === "") {
+                    acc.push(index);
+                }
+                return acc;
+            }, []);
 
-    function minimaxLimitedDepth(board, depth, isMaximizing, maxDepth) {
-        const scores = {
-            X: -1,
-            O: 1,
-            tie: 0
-        };
+            if (emptyCells.length > 0) {
+                let computerMove;
 
-        let result = checkWinner();
-        if (result !== null) {
-            return scores[result];
+                switch (difficultyLevel) {
+                    case "easy":
+                        computerMove = getRandomMove(emptyCells);
+                        break;
+                    case "medium":
+                        computerMove = getMediumMove(emptyCells);
+                        break;
+                    case "hard":
+                        computerMove = getHardMove(emptyCells);
+                        break;
+                    case "impossible":
+                        computerMove = getImpossibleMove(emptyCells);
+                        break;
+                    default:
+                        break;
+                }
+
+                gameBoard[computerMove] = currentPlayer;
+                updateCellView(computerMove);
+
+                if (checkWinner()) {
+                    resultDisplay.textContent = `${currentPlayer} ha vinto!`;
+                } else if (isBoardFull()) {
+                    resultDisplay.textContent = "Pareggio!";
+                } else {
+                    currentPlayer = currentPlayer === "X" ? "O" : "X";
+                }
+            }
         }
 
-        if (depth >= maxDepth) {
-            return 0; // Halt the recursion and assign a neutral score
+        function getRandomMove(emptyCells) {
+            return emptyCells[Math.floor(Math.random() * emptyCells.length)];
         }
 
-        if (isMaximizing) {
+        function getMediumMove(emptyCells) {
+            // Scegli una mossa casuale in modalità media
+            if (Math.random() > 0.5) {
+                return getRandomMove(emptyCells);
+            } else {
+                // Oppure scegli la mossa migliore in modalità media
+                return getBestMove(gameBoard, currentPlayer).index;
+            }
+        }
+
+        function getHardMove(emptyCells) {
+            // Scegli sempre la mossa migliore in modalità difficile
+            return getBestMoveLimitedDepth(gameBoard, currentPlayer, 2).index;
+        }
+
+        function getImpossibleMove(emptyCells) {
+            // Scegli sempre la mossa migliore in modalità impossibile
+            return getBestMoveLimitedDepth(gameBoard, currentPlayer, 3).index;
+        }
+
+        function getBestMoveLimitedDepth(board, player, depth) {
+            // Minimax algorithm con profondità limitata
             let bestScore = -Infinity;
+            let bestMove;
+
             for (let i = 0; i < board.length; i++) {
                 if (board[i] === "") {
-                    board[i] = "O";
-                    let score = minimaxLimitedDepth(board, depth + 1, false, maxDepth);
+                    board[i] = player;
+                    let score = minimaxLimitedDepth(board, 0, false, depth);
                     board[i] = "";
-                    bestScore = Math.max(score, bestScore);
+
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestMove = i;
+                    }
                 }
             }
-            return bestScore;
-        } else {
-            let bestScore = Infinity;
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === "") {
-                    board[i] = "X";
-                    let score = minimaxLimitedDepth(board, depth + 1, true, maxDepth);
-                    board[i] = "";
-                    bestScore = Math.min(score, bestScore);
-                }
-            }
-            return bestScore;
+
+            return { index: bestMove, score: bestScore };
         }
-    }
 
-    function isGameOver() {
-        return resultDisplay.textContent !== "";
-    }
+        function minimaxLimitedDepth(board, depth, isMaximizing, maxDepth) {
+            const scores = {
+                X: -1,
+                O: 1,
+                tie: 0
+            };
 
-    function isBoardFull() {
-        return gameBoard.every(cell => cell !== "");
-    }
+            let result = checkWinner();
+            if (result !== null) {
+                return scores[result];
+            }
 
-    function checkDraw() {
-        const drawCombinations = [
-            [0, 1, 2, 3, 4, 5, 6, 7, 8], // All cells are filled
-            // Aggiungi altre combinazioni se necessario
-        ];
+            if (depth >= maxDepth) {
+                return 0; // Halt the recursion and assign a neutral score
+            }
 
-        // Verifica se tutte le celle sono piene
-        const allCellsFilled = gameBoard.every(cell => cell !== "");
-
-        // Verifica se nessuno ha ancora vinto
-        const noWinner = !checkWinner();
-
-        return allCellsFilled && noWinner;
-    }
-
-    function checkWinner() {
-        const winningCombinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-            [0, 4, 8], [2, 4, 6] // Diagonals
-        ];
-
-        for (const combination of winningCombinations) {
-            const [a, b, c] = combination;
-            if (gameBoard[a] !== "" && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-                return gameBoard[a];
+            if (isMaximizing) {
+                let bestScore = -Infinity;
+                for (let i = 0; i < board.length; i++) {
+                    if (board[i] === "") {
+                        board[i] = "O";
+                        let score = minimaxLimitedDepth(board, depth + 1, false, maxDepth);
+                        board[i] = "";
+                        bestScore = Math.max(score, bestScore);
+                    }
+                }
+                return bestScore;
+            } else {
+                let bestScore = Infinity;
+                for (let i = 0; i < board.length; i++) {
+                    if (board[i] === "") {
+                        board[i] = "X";
+                        let score = minimaxLimitedDepth(board, depth + 1, true, maxDepth);
+                        board[i] = "";
+                        bestScore = Math.min(score, bestScore);
+                    }
+                }
+                return bestScore;
             }
         }
 
-        return null;
-    }
+        function isGameOver() {
+            return resultDisplay.textContent !== "";
+        }
 
-    function resetGame() {
-        gameBoard = ["", "", "", "", "", "", "", "", ""];
-        currentPlayer = "X";
-        resultDisplay.textContent = "";
-        cells.innerHTML = "";
+        function isBoardFull() {
+            return gameBoard.every(cell => cell !== "");
+        }
+
+        function checkDraw() {
+            const drawCombinations = [
+                [0, 1, 2, 3, 4, 5, 6, 7, 8], // All cells are filled
+                // Aggiungi altre combinazioni se necessario
+            ];
+
+            // Verifica se tutte le celle sono piene
+            const allCellsFilled = gameBoard.every(cell => cell !== "");
+
+            // Verifica se nessuno ha ancora vinto
+            const noWinner = !checkWinner();
+
+            return allCellsFilled && noWinner;
+        }
+
+        function checkWinner() {
+            const winningCombinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6] // Diagonals
+            ];
+
+            for (const combination of winningCombinations) {
+                const [a, b, c] = combination;
+                if (gameBoard[a] !== "" && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    return gameBoard[a];
+                }
+            }
+
+            return null;
+        }
+
+        function resetGame() {
+            gameBoard = ["", "", "", "", "", "", "", "", ""];
+            currentPlayer = "X";
+            resultDisplay.textContent = "";
+            cells.innerHTML = "";
+            createBoard();
+        }
+
+        function updateCellView(index) {
+            const cell = document.querySelector(`[data-index="${index}"]`);
+            cell.textContent = currentPlayer;
+            cell.style.cursor = "not-allowed";
+        }
+
         createBoard();
-    }
-
-    function updateCellView(index) {
-        const cell = document.querySelector(`[data-index="${index}"]`);
-        cell.textContent = currentPlayer;
-        cell.style.cursor = "not-allowed";
-    }
-
-    createBoard();
-</script>
+    </script>
 
 </body>
+
 </html>
 
 
