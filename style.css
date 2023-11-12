@@ -170,3 +170,10 @@ a{
   .grid-prime {
     flex-wrap: wrap;
   }
+
+  .eslisir {
+    margin-top: -36px;
+    margin-bottom: -9px;
+    width: 30px;
+    height: 40px;
+  }
