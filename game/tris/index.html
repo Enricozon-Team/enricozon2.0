@@ -145,9 +145,9 @@
 
             const winner = checkWinner();
             if (winner) {
-                resultDisplay.textContent = `${winner === "tie" ? "Pareggio" : winner} ha vinto!`;
+                resultDisplay.textContent = `${winner === "tie" ? "Nessuno" : winner} ha vinto!`;
             } else if (isBoardFull()) {
-                resultDisplay.textContent = "Pareggio!";
+                resultDisplay.textContent = "Nessuno";
             } else {
                 currentPlayer = currentPlayer === "X" ? "O" : "X";
                 if (gameMode === "computer" && currentPlayer === "O") {
@@ -190,9 +190,9 @@
 
             const winner = checkWinner();
             if (winner) {
-                resultDisplay.textContent = `${winner === "tie" ? "Pareggio" : winner} ha vinto!`;
+                resultDisplay.textContent = `${winner === "tie" ? "Nessuno" : winner} ha vinto!`;
             } else if (isBoardFull()) {
-                resultDisplay.textContent = "Pareggio!";
+                resultDisplay.textContent = "Nessuno";
             } else {
                 currentPlayer = currentPlayer === "X" ? "O" : "X";
             }
