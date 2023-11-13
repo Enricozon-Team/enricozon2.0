@@ -1,8 +1,8 @@
-.product-badge-due {
+.product-badge-green{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e53434;
+    background-color: #00e62e;
     color: #fff;
     font-size: .8rem;
     line-height: 1.5;
@@ -20,22 +20,22 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  .product-badge-due:hover{
+  .product-badge-green:hover{
     transform: scale(1.1);
   }
 
-  .product-badge-due.choice {
+  .product-badge-green.choice {
     background-color: #23303e;
     color: #fff;
     max-width: 8rem;
     margin-right: .25rem;
   }
   
-  .product-badge-due.choice>span {
-    color: #e53434;
+  .product-badge-green.choice>span {
+    color: #00e62e;
   }
   
-  .product-badge-due.choice sup {
+  .product-badge-green.choice sup {
     position: relative;
     font-size: .5rem;
   }
