@@ -521,6 +521,23 @@
     </div>
 </div>
 
+<div class="image-container">
+
+    <a onclick="playAudio()">
+        <div class="product-badge">ARMA FINTA</div>
+    </a>
+
+    <a onclick="playAudio()">
+        <img class="img2" src="immagini/mk43.jpeg">
+        <div class="image-description">
+            <p>MK43</p>
+            <p>$9999999.00</p>
+        </div>
+    </a>
+</div>
+
+<audio id="audioPlayer" src="gun.mp3"></audio>
+
 
 <div id="chi-siamo"></div>
     <div id="coming-soon"></div>
@@ -563,6 +580,12 @@
             }
         }
     }
+
+    function playAudio() {
+        var audio = document.getElementById('audioPlayer');
+        audio.play();
+    }
+
 </script>
 
 <footer>© Enricozon 2023</footer>
