@@ -14,7 +14,7 @@
   z-index: 1;
   -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
-  top: 2.60rem;
+  top: 2.50rem;
   left: 0.90rem;
   border-radius: 0.2rem;
   transition: transform 0.3s ease-in-out;
