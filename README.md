@@ -1,5 +1,5 @@
 # Enricozon 2.0
-Coming Soon...
+NOW RELEASED ON [enricozon.mom](https://enricozon.mom)
 > [!Important] 
 > The items/photos in this website are used for entertainment purposes only. And we dont own the right of any of those so, if you don't want a photo or item of your propriety being displayed in this site, please contact us at [enricozon@cranci.xyz](mailto:enricozon@cranci.xyz)
 
