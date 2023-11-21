@@ -512,11 +512,39 @@
 
 
     <div class="image-container">
-<a href="prodotti/heichpee-enricozon/index.html">
+        <a href="prodotti/heichpee-enricozon/index.html">
+            <div class="product-badge-green">Tecnologia</div></a>
+    <a href="prodotti/heichpee-enricozon/index.html">
     <img class="img2" src="immagini/heichpee.jpg">
     <div class="image-description">
         <p>HP Computer Portatile</p>
         <p>$40</p>
+    </a>
+    </div>
+</div>
+
+<div class="image-container">
+
+    <a onclick="playAudio()">
+        <div class="product-badge">ARMA FINTA</div>
+    </a>
+
+    <a onclick="playAudio()">
+        <img class="img2" src="immagini/mk43.jpeg">
+        <div class="image-description">
+            <p>MK43</p>
+            <p>$9999999.00</p>
+        </div>
+    </a>
+</div>
+<audio id="audioPlayer" src="gun.mp3"></audio>
+
+<div class="image-container">
+    <a href="prodotti/canetazza-enricozon/index.html">
+    <img class="img2" src="immagini/dog-mug.jpg">
+    <div class="image-description">
+        <p>Cane Tazza</p>
+        <p>$7</p>
     </a>
     </div>
 </div>
@@ -563,6 +591,12 @@
             }
         }
     }
+
+    function playAudio() {
+        var audio = document.getElementById('audioPlayer');
+        audio.play();
+    }
+
 </script>
 
 <footer>© Enricozon 2023</footer>

