@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     botResponse = "Assolutamente no, mi sarei già dato fuoco. ";
                 } 
                 else if (userMessage.toLowerCase().includes("chi sono i creatori di enricozon?")) {
-                    botResponse = "I creatori del progetto di Enricozon sono Cranci ed Enriccio, mentre i developer sono Cranci, Enriccio, Cholito e TheProcionCatIta. Il design dei loghi è fatto invece da Tanoshi. ";
+                    botResponse = "I creatori del progetto di Enricozon sono cranci ed Enriccio, mentre i developer sono cranci, Enriccio, Cholito e TheProcionCatIta. Il design dei loghi è fatto invece da Tanoshi. ";
                 } 
                 else if (userMessage.toLowerCase().includes("chi è enriccio?")) {
-                    botResponse = "enriccio è un figo, seguilo su insta ora @enri.ccio"
+                    botResponse = "enriccio è uno Schiavizzatore. Schivizza tutti i developer di Enricozon. Soprattutto cranci che non viene pagato da 2 anni."
                 }
             // Simulate a response from the chatbot
             setTimeout(function () {
