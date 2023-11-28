@@ -537,7 +537,7 @@
         </div>
     </a>
 </div>
-<audio id="audioPlayer" src="gun.mp3"></audio>
+<audio id="audioPlayer" src="sound/gun.mp3"></audio>
 
 <div class="image-container">
     <a href="prodotti/canetazza-enricozon/index.html">
@@ -548,6 +548,18 @@
     </a>
     </div>
 </div>
+
+<div class="image-container">
+
+    <a onclick="playAudio()">
+        <img class="img2" src="immagini/nyan.png">
+        <div class="image-description">
+            <p>Nyan Cat</p>
+            <p>$1190.88</p>
+        </div>
+    </a>
+</div>
+<audio id="audioPlayer2" src="sound/nyan.mp3"></audio>
 
 
 <div id="chi-siamo"></div>
@@ -594,6 +606,7 @@
 
     function playAudio() {
         var audio = document.getElementById('audioPlayer');
+        var audio = document.getElementById('audioPlayer2');
         audio.play();
     }
 
