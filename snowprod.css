@@ -1,3 +1,7 @@
+.body {
+    overflow-x: hidden;
+}
+
 .snowflake {
     position: absolute;
     top: 0;
@@ -17,7 +21,7 @@
     
     @keyframes fallMobile {
         to {
-            transform: translateY(1600px);
+            transform: translateY(1400px);
         }
     }
 }
