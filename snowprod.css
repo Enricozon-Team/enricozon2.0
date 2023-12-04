@@ -17,7 +17,7 @@
     
     @keyframes fallMobile {
         to {
-            transform: translateY(500px);
+            transform: translateY(1600px);
         }
     }
 }
@@ -30,7 +30,7 @@
     
     @keyframes fallDesktop {
         to {
-            transform: translateY(500px);
+            transform: translateY(700px);
         }
     }
 }
