@@ -17,7 +17,7 @@
     
     @keyframes fallMobile {
         to {
-            transform: translateY(15400px);
+            transform: translateY(20400px);
         }
     }
 }
