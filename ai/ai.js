@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     botResponse = "Enricozon è il miglior sito di vendite online, migliore di Amazon. ";
                 } 
                 else if (userMessage.toLowerCase().includes("a che domande rispondi?")) {
-                    botResponse = "Rispondo alle suguenti domande: ciao; quante caramelle ha Elisa?; uwu; quanto è negro adam; cos'è enricozon ai; come aggiungere una domanda ad enricozon ai; cos'è enricozon?; sei gay; chi sono i creatori di enricozon?; come mettersi il cazzo in culo; chi è enriccio?. Ricorda di scrivere le domande uguali a come sono scirtte in questo messaggio atrimenti vedrai un messaggio di errore e non avrai la tua risposta.";
+                    botResponse = "Rispondo alle suguenti domande: ciao; quante caramelle ha elisa?; uwu; quanto è negro adam; cos'è enricozon ai; come aggiungere una domanda ad enricozon ai; cos'è enricozon?; sei gay; chi sono i creatori di enricozon?; come mettersi il cazzo in culo; chi è enriccio?. Ricorda di scrivere le domande uguali a come sono scirtte in questo messaggio atrimenti vedrai un messaggio di errore e non avrai la tua risposta.";
                 }
                 else if (userMessage.toLowerCase().includes("sei gay?")) {
                     botResponse = "Assolutamente no, mi sarei già dato fuoco. ";
