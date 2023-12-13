@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 else if (userMessage.toLowerCase().includes("quanto è negro adam")) {
                     botResponse = "Tanto, molto, troppo";
                 }
-                else if (userMessage.toLowerCase().includes("quante caramelle ha Elisa?")) {
+                else if (userMessage.toLowerCase().includes("quante caramelle ha elisa?")) {
                     botResponse = "Ha una farm di caramelle (infinite)";
                 }
 
