@@ -99,3 +99,23 @@ select:-webkit-autofill {
     background-color: #004daa !important;
     color: #e8e6e3 !important;
 }
+
+.button {
+    display: inline-block;
+    padding: 15px 20px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: cyan;
+    border: 2px solid cyan;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #456fa0;
+}
