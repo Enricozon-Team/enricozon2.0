@@ -31,7 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     botResponse = "Enricozon AI è il nuovo progetto dei developper di Enricozon. Dopo Enricozon e Enricozon 2.0 il loro nuovo progetto sono proprio io! Sono stata creata per rispondere alle tue domande; tuttavia sono ancora in una fase beta quindi non posso rispondere a tutte le domande, ma solo a quelle elencate nel messaggio di risposta alla domanda: a che domande rispondi. Per scoprire come aggiungere la tua domanda ad Enricozon AI digita la seguente domanda: come aggiungere una domanda ad enricozon ai";
                 }
                 else if (userMessage.toLowerCase().includes("come aggiungere una domanda ad enricozon ai")) {
-                    botResponse = "Per aggiungere una domanda ad Enricozon AI ti basta inviare un'email all'email support@enricozon.mom; la tua domanda sarà visualizzata dai developper di Enricozon e se rispetta i criteri verrà aggiunta ad Enricozon AI. Ti sarà inviata un'email di risposta se la tua domanda sarà aggiunta!"
+                    botResponse = "Per aggiungere una domanda ad Enricozon AI ti basta inviare un'email all'email support@enricozon.mom; la tua domanda sarà visualizzata dai developper di Enricozon e se rispetta i criteri verrà aggiunta ad Enricozon AI. Ti sarà inviata un'email di risposta se la tua domanda sarà aggiunta!";
+                }
+                else if (userMessage.toLowerCase().includes("uwu")) {
+                    botResponse = "Scrivilo un'altra volta e ti taglio la gola";
                 }
             // Simulate a response from the chatbot
             setTimeout(function () {
