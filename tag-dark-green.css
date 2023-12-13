@@ -1,0 +1,45 @@
+.product-badge-dark-green {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0d4d22;
+    color: #fff;
+    font-size: .8rem;
+    line-height: 1.5;
+    height: 1.625rem;
+    width: 100%;
+    max-width: 5.5rem;
+    padding-right: .5rem;
+    position: relative;
+    z-index: 1;
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    top: 2.50rem;
+    left: 0.90rem;
+    border-radius: 0.2rem;
+    transition: transform 0.3s ease-in-out;
+   }
+  
+  .product-badge-dark-green:hover{
+    transform: scale(1.1);
+  }
+  
+  .product-badge-dark-green.choice {
+    background-color: #23303e;
+    color: #fff;
+    max-width: 8rem;
+    margin-right: .25rem;
+  }
+  
+  .product-badge-dark-green.choice>span {
+    color: #0d4d22;
+  }
+  
+  .product-badge-dark-green.choice sup {
+    position: relative;
+    font-size: .5rem;
+  }
+  
+  .grid-prime {
+    flex-wrap: wrap;
+  }
