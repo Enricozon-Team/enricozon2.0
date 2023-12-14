@@ -185,3 +185,27 @@ a{
     width: 30px;
     height: 40px;
   }
+
+  .img-dark-green{
+    margin: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-dark-green:hover {
+    box-shadow: 0 0 10px #0d4d22, 0 0 40px #0d4d22, 0 0 80px #0d4d22;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+}
+
+.img-red{
+    margin: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-red:hover {
+    box-shadow: 0 0 10px #e53434, 0 0 40px #e53434, 0 0 80px #e53434;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+}
