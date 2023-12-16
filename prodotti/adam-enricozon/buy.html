@@ -42,12 +42,8 @@
     }
 
     function shareOnWhatsApp() {
-        const text = 'Just bought an Adam from Enricozon. Check it out: https://enricozon.mom';
-
-        const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
-
-        window.open(url, '_blank');
-}
+            window.open('whatsapp://send?text=' + encodeURIComponent('Ho appena comprato un Adam da Enricozon. https://enricozon.mom'));
+        }
 
 
     function shareOnInstagram() {
