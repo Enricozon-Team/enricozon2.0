@@ -25,6 +25,7 @@
         <div class="share-buttons">
             <div class="share-button" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></div>
             <div class="share-button" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></div>
+            <div class="share-button" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></div>
         </div>
 
         <div>
@@ -42,6 +43,10 @@
 
         function shareOnWhatsApp() {
             window.open('whatsapp://send?text=' + encodeURIComponent('Ho appena comprato un Adam da Enricozon. https://enricozon.mom'));
+        }
+
+        function shareOnInstagram() {
+            window.open('instagram://send?text=' + encodeURIComponent('Ho appena comprato un Adam da Enricozon. https://enricozon.mom'));
         }
 
 
