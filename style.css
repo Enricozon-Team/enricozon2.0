@@ -221,3 +221,27 @@ a{
     transition-delay: 0.02s;
     transform: scale(1.1);
 }
+
+.img-orange{
+    margin: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-orange:hover {
+    box-shadow: 0 0 10px #e67a00, 0 0 40px #e67a00, 0 0 80px #e67a00;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+}
+
+.img-verde{
+    margin: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-verde:hover {
+    box-shadow: 0 0 10px #34e56f, 0 0 40px #34e56f, 0 0 80px #34e56f;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+}
