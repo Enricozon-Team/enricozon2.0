@@ -43,20 +43,7 @@
 
     function shareOnWhatsApp() {
             window.open('whatsapp://send?text=' + encodeURIComponent('Ho appena comprato un Adam da Enricozon. https://enricozon.mom'));
-        }
-
-
-    function shareOnInstagram() {
-        const text = 'Ho appena comprato un Adam da Enricozon. https://enricozon.mom';
-        const hashtags = 'enricozon,shopping';
-    
-        const url = `https://www.instagram.com/share?url=${encodeURIComponent('https://enricozon.mom')}&text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent(hashtags)}`;
-
-        window.open(url, '_blank');
     }
-
-
-
 
     fetch('https://ipinfo.io/json')
         .then(response => response.json())
