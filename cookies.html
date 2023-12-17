@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Stuff</title>
+    <link rel="icon" href="immagini/loghi/logo.jpeg">
+    <link rel="stylesheet" href="pagcookie.css">
+    <link rel="stylesheet" href="snowflakes.css">
+</head>
+<body>
+
+    <button class="open-btn" onclick="openNav()">☰</button>
+
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">x</a>
+        <a href="/">Home</a>
+        <a href="util/about/index.html">About</a>
+        <a href="util/login/index.html">Login</a>
+        <a href="https://instagram.com/enricozon">Instagram</a>
+        <a href="https://discord.gg/kGK8BNUEwV">Discord</a>
+        <a href="https://whatsapp.com/channel/0029Va8G3gGAu3aM27dYtF1V">WhatsApp</a>
+        <a href="mailto:enricozon@cranci.xyz">Contattaci</a>
+        <a href="util/time/index.html">Time Machine</a>
+        <a href="util/bottoni/bottoni.html">Link Utili</a>
+        <a href="game/index.html">MiniGame</a>
+    </div>
+
+    <a href="/"><img class="img1" src="immagini/loghi/enricozonxmas.png"></a>
+
+    <h1>Legal Stuff</h1>
+    <p>This website is subject to the following terms and conditions:</p>
+    <ul>
+        <li>Your IP will be used for analytical purposes.</li>
+        <li>We won't track your purchase.</li>
+        <li>We will use the user location to understand the users' most common location.</li>
+    </ul>
+    <p>By accessing and using this website, you agree to abide by these terms and conditions.</p>
+    <script src="script.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("mySidebar").style.paddingLeft = "20px";
+            document.getElementById("mySidebar").style.transition = "0.5s";
+            document.getElementsByClassName("content")[0].style.marginLeft = "250px";
+        }
+    
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.paddingLeft = "0";
+            document.getElementsByClassName("content")[0].style.marginLeft= "0";
+        }
+    </script>
+</body>
+</html>

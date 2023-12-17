@@ -12,5 +12,5 @@
     }
 
     function vaiAllaPaginaInfo() {
-        window.location.href = 'cookie/index.html';
+        window.location.href = 'cookies.html';
     }

@@ -1,0 +1,141 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #202020;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+.sidebar a {
+    padding: 8px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.content {
+    margin-left: 0;
+    transition: margin-left 0.5s;
+    padding: 16px;
+}
+
+.open-btn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 2%;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+.img1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: 175px;
+  }
+
+.img2{
+    margin: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img2:hover {
+    box-shadow: 0 0 10px rgb(11, 251, 251), 0 0 40px cyan, 0 0 80px cyan;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 16px;
+}
+
+#search-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    color: #fff;
+}
+
+p {
+    color: #fff;
+    text-decoration: none;
+}
+
+s {
+    color: #fff;
+}
+
+.image-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.image-description {
+    margin-top: 1px;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style:none;
+    color: #fff;
+}
+
+h1{
+    color: #fff;
+}

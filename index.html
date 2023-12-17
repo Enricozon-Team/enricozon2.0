@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="tag-purple.css">
     <link rel="stylesheet" href="snowflakes.css">
     <link rel="stylesheet" href="tag-dark-green.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap">
+
 
     <meta name="description" content="Miglior mercato di sempre" />
     <meta property="og:title" content="Enricozon" />
@@ -35,6 +37,7 @@
 <div class="sidebar" id="mySidebar">
     <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">x</a>
     <a href="util/about/index.html">About</a>
+    <a href="cookies.html">Termini e Condizioni</a>
     <a href="util/login/index.html">Login</a>
     <a href="https://instagram.com/enricozon">Instagram</a>
     <a href="https://discord.gg/kGK8BNUEwV">Discord</a>
@@ -603,6 +606,19 @@
 </div>
 
 <div class="image-container">
+    <a onclick="playAudio3()">
+        <div class="product-badge-dark-green">Natale 2023</div></a>
+    <a onclick="playAudio3()">
+        <img class="img-dark-green" src="immagini/babbo.jpg">
+        <div class="image-description">
+            <p>Babbo Natale?</p>
+            <p>$-1</p>
+        </div>
+    </a>
+</div>
+<audio id="audioPlayer3" src="sound/jingle.mp3"></audio>
+
+<div class="image-container">
     <a href="prodotti/pacconatale-enricozon/index.html">
         <div class="product-badge-dark-green">Natale 2023</div></a>
 <a href="prodotti/pacconatale-enricozon/index.html">
@@ -663,7 +679,10 @@
         var audio = document.getElementById('audioPlayer2');
         audio.play();
     }
-
+    function playAudio3() {
+        var audio = document.getElementById('audioPlayer3');
+        audio.play();
+    }
 </script>
 
 <script src="script.js"></script>
