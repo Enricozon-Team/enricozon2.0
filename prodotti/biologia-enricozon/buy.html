@@ -23,8 +23,9 @@
         <p class="p1" id="currentLocation">Fetching location...</p>
         
         <div class="share-buttons">
-            <div class="share-button" onclick="shareOnFacebook()"><i class="fab fa-facebook-square"></i></div>
-            <div class="share-button" onclick="shareOnTwitter()"><i class="fab fa-twitter-square"></i></div>
+            <div class="share-button" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></div>
+            <div class="share-button" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></div>
+            <div class="share-button" onclick="shareOnInstagram()"><i class="fab fa-instagram"></i></div>
         </div>
 
         <div>
@@ -35,14 +36,14 @@
     </div>
 
     <script>
-        function shareOnFacebook() {
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('Ho appena comprato un Libro di Biologia da Enricozon. https://enricozon.mom'));
-        }
 
-        function shareOnTwitter() {
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Ho appena comprato un Libro di Biologia da Enricozon. https://enricozon.mom'));
-        }
+    function shareOnTwitter() {
+        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('Ho appena comprato un Adam da Enricozon. https://enricozon.mom'));
+    }
 
+    function shareOnWhatsApp() {
+            window.open('whatsapp://send?text=' + encodeURIComponent('Ho appena comprato un Adam da Enricozon. https://enricozon.mom'));
+    }
 
     fetch('https://ipinfo.io/json')
         .then(response => response.json())
@@ -69,7 +70,7 @@
         })
         .catch(error => {
             console.error('Error fetching location:', error);
-            document.getElementById("currentLocation").innerHTML = "Error fetching location.";
+            document.getElementById("currentLocation").innerHTML = "Errore nella localizzazione";
         });
 
     
