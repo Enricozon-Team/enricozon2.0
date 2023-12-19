@@ -34,3 +34,21 @@
         }
     }
 }
+
+#gift-box {
+    width: 50px;
+    height: 50px;
+    background-image: url('immagini/giftbox.png'); /* Make sure to adjust the path accordingly */
+    background-size: cover;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
