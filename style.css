@@ -423,8 +423,19 @@ a {
 #end-message {
   font-size: 3em;
   text-align: center;
-  background: linear-gradient(to right, blue, orange);
+  background: linear-gradient(270deg, #0084ff, #f9690e);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: Gradient 2s alternate infinite;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
