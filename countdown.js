@@ -1,7 +1,7 @@
 var countdown = document.getElementById("countdown");
 var endMessage = document.getElementById("end-message");
 
-var newYearDate = new Date("Dec 26, 2023 16:46:00").getTime();
+var newYearDate = new Date("Jan 1, 2024 00:00:00").getTime();
 
 var x = setInterval(function () {
   var now = new Date().getTime();
