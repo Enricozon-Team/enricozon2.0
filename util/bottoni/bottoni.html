@@ -1,75 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Link Utili Enricozon</title>
-    <link rel="icon" href="favicon.ico">
-</head>
-<body>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
     <button class="open-btn" onclick="openNav()">☰</button>
 
-<div class="sidebar" id="mySidebar">
-    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">x</a>
-    <a href="https://enricozon.mom">Home</a>
-    <a href="https://enricozon.mom/util/login/index.html">Login</a>
-    <a href="https://instagram.com/enricozon">Instagram</a>
-    <a href="https://whatsapp.com/channel/0029Va8G3gGAu3aM27dYtF1V">WhatsApp</a>
-    <a href="mailto:support@enricozon.mom">Contattaci</a>
-    <a href="https://enricozon.mom/util/time/index.html">Time Machine</a>
-    <a href="https://enricozon.mom/game/index.html">MiniGame</a>
-</div>
+    <div class="sidebar" id="mySidebar">
+      <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">x</a>
+      <a href="https://enricozon.mom">Home</a>
+      <a href="https://enricozon.mom/util/login/index.html">Login</a>
+      <a href="https://instagram.com/enricozon">Instagram</a>
+      <a href="https://whatsapp.com/channel/0029Va8G3gGAu3aM27dYtF1V"
+        >WhatsApp</a
+      >
+      <a href="mailto:support@enricozon.mom">Contattaci</a>
+      <a href="https://enricozon.mom/util/time/index.html">Time Machine</a>
+      <a href="https://enricozon.mom/game/index.html">MiniGame</a>
+    </div>
     <div class="content">
-
-    <img class="img1" src="enricozonxmas.png">
+      <img
+        class="img1"
+        src="https://www.enricozon.mom/immagini/loghi/tanoshizon.png"
+      />
     </div>
     <div class="container">
-        <a href="https://instagram.com/enri.bocco"><button class="button">IG enriccio</button></a>
-        <a href="https://instagram.com/cranci22"><button class="button">IG cranci</button></a>
-        <a href="https://instagram.com/edo_tolotolone"><button class="button">IG Cholito</button></a>
-        <a href="https://www.instagram.com/tanoshi.karafuru"><button class="button">IG Tanoshi</button></a>
-        <a href="https://www.instagram.com/_alessandro_costantin_"><button class="button">IG Costa</button></a>
+      <a href="https://instagram.com/enri.bocco"
+        ><button class="button">IG enriccio</button></a
+      >
+      <a href="https://instagram.com/cranci22"
+        ><button class="button">IG cranci</button></a
+      >
+      <a href="https://instagram.com/edo_tolotolone"
+        ><button class="button">IG Cholito</button></a
+      >
+      <a href="https://www.instagram.com/tanoshi.karafuru"
+        ><button class="button">IG Tanoshi</button></a
+      >
+      <a href="https://www.instagram.com/_alessandro_costantin_"
+        ><button class="button">IG Costa</button></a
+      >
     </div>
     <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-            document.getElementById("mySidebar").style.paddingLeft = "20px";
-            document.getElementById("mySidebar").style.transition = "0.5s";
-            document.getElementsByClassName("content")[0].style.marginLeft = "250px";
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("mySidebar").style.paddingLeft = "20px";
+        document.getElementById("mySidebar").style.transition = "0.5s";
+        document.getElementsByClassName("content")[0].style.marginLeft =
+          "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("mySidebar").style.paddingLeft = "0";
+        document.getElementsByClassName("content")[0].style.marginLeft = "0";
+      }
+
+      function showText(text) {
+        var contentDiv =
+          document.getElementById("chi-siamo") ||
+          document.getElementById("coming-soon");
+        contentDiv.innerHTML = "<p>" + text + "</p>";
+      }
+
+      function filterProducts() {
+        var input, filter, container, images, description, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        container = document.getElementsByClassName("content")[0];
+        images = container.getElementsByClassName("image-container");
+
+        for (i = 0; i < images.length; i++) {
+          description =
+            images[i].getElementsByClassName("image-description")[0];
+          txtValue = description.textContent || description.innerText;
+
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            images[i].style.display = "";
+          } else {
+            images[i].style.display = "none";
+          }
         }
-    
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("mySidebar").style.paddingLeft = "0";
-            document.getElementsByClassName("content")[0].style.marginLeft= "0";
-        }
-    
-        function showText(text) {
-            var contentDiv = document.getElementById("chi-siamo") || document.getElementById("coming-soon");
-            contentDiv.innerHTML = "<p>" + text + "</p>";
-        }
-    
-        function filterProducts() {
-            var input, filter, container, images, description, i, txtValue;
-            input = document.getElementById("search");
-            filter = input.value.toUpperCase();
-            container = document.getElementsByClassName("content")[0];
-            images = container.getElementsByClassName("image-container");
-    
-            for (i = 0; i < images.length; i++) {
-                description = images[i].getElementsByClassName("image-description")[0];
-                txtValue = description.textContent || description.innerText;
-    
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    images[i].style.display = "";
-                } else {
-                    images[i].style.display = "none";
-                }
-            }
-        }
+      }
     </script>
-    
-</body>
+  </body>
 </html>
