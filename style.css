@@ -423,7 +423,7 @@ a {
 #end-message {
   font-size: 3em;
   text-align: center;
-  background: linear-gradient(270deg, #0084ff, #f9690e);
+  background: linear-gradient(270deg, #00f, #800080, #add8e6);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
