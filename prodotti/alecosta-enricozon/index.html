@@ -47,13 +47,72 @@
         </div>
 
         <div class="customer-reviews">
-          <h2>Recensioni degli utenti</h2>
-          <ul>
-            <li>"Prodotto Fantastico"</li>
-            <li>"Prodotto di alta qualità"</li>
-            <li>"Me lo aspettavo più basso..."</li>
+          <h2>Recensioni</h2>
+          <ul id="reviews">
+            <!-- Recensioni -->
           </ul>
+          <form id="review-form">
+            <label for="username">Username:</label><br />
+            <input type="text" id="username" name="username" /><br />
+            <label for="review">Write a review:</label><br />
+            <textarea id="review" name="review" rows="4" cols="50"></textarea
+            ><br />
+            <label for="rating">Rating (0-10):</label>
+            <input
+              type="number"
+              id="rating"
+              name="rating"
+              min="0"
+              max="10"
+              required
+            />
+            <input type="submit" value="Submit" />
+          </form>
         </div>
+
+        <script>
+          document
+            .getElementById("review-form")
+            .addEventListener("submit", function (event) {
+              // Prevent the form from being submitted normally
+              event.preventDefault();
+
+              // Get the username, rating, and review text from the form
+              var username = event.target.username.value;
+              var rating = event.target.rating.value;
+              var reviewText = event.target.review.value;
+
+              // Create the data object to be sent to the Discord webhook
+              var data = {
+                username: username,
+                content: `**${username}** (${rating}/10)\n${reviewText}\n**Recensione di Adam**`,
+              };
+
+              // Use the fetch API to make a POST request to the Discord webhook URL
+              fetch(
+                "https://discord.com/api/webhooks/1190288387303817236/U1rQeK0Bsf8RH55v_JyRrzeggXsSKpw9Uu_IKip05BBLiLcq5RsUxuMulNkdn5VVZt8l",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                }
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log("Success:", data);
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                });
+
+              // Clear the form
+              event.target.username.value = "";
+              event.target.rating.value = "";
+              event.target.review.value = "";
+            });
+        </script>
       </div>
     </div>
   </body>
