@@ -70,15 +70,9 @@
               max="10"
               required
             />
-            <input type="submit" value="Submit" onclick="showAlertBanner()"/>
+            <input type="submit" value="Submit" />
           </form>
         </div>
-
-        <div id="alertBanner" class="alert-banner">
-          <span class="alert-icon">&#9888;</span> <!-- Unicode character for warning sign -->
-          <span id="alertText">La tua recensione è stata inviata, sarà online entro 24h</span>
-          <span class="close-btn" onclick="closeAlertBanner()">×</span> <!-- Unicode character for 'x' -->
-      </div>
 
         <script>
           document
@@ -122,25 +116,6 @@
               event.target.rating.value = "";
               event.target.review.value = "";
             });
-
-
-            function showAlertBanner() {
-        var alertBanner = document.getElementById("alertBanner");
-        var alertText = document.getElementById("alertText");
-
-        // Customize the alert text
-        alertText.textContent = "La tua recensione è stata inviata, sarà online entro 24h";
-
-        // Show the alert banner
-        alertBanner.style.display = "flex";
-    }
-
-    function closeAlertBanner() {
-        var alertBanner = document.getElementById("alertBanner");
-
-        // Hide the alert banner
-        alertBanner.style.display = "none";
-    }
         </script>
       </div>
     </div>
