@@ -133,7 +133,7 @@ header img {
 }
 
 #review-form textarea {
-  width: 170px; /* Adjust this value as needed */
+  width: 380px; /* Adjust this value as needed */
   background-color: #303234; /* Light gray background */
   color: white; /* Add this line */
   padding: 0.5em;
