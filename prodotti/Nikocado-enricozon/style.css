@@ -30,7 +30,6 @@ header img {
   flex: 1 1 50%;
   max-width: 50%;
   margin-right: -500px; /* Adjust the margin to move it more to the right */
-  margin-top: -550px;
 }
 
 .product-image img {
