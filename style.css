@@ -541,3 +541,17 @@ a {
 .red:hover {
   background-color: #b30000;
 }
+
+/* style.css */
+
+/* Stile delle particelle di confetti */
+.confetti {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  position: fixed;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  z-index: 999;
+}

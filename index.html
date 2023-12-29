@@ -42,7 +42,7 @@
     <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
   </head>
   <body>
-    <div id="fireworks-container"></div>
+    
     <div id="cookie-popup">
       <p>
         Questo sito web utilizza i cookie per assicurarti la migliore esperienza
@@ -74,7 +74,7 @@
 
     <div class="content">
       <img class="img1" src="immagini/loghi/enricozonroyale.png" />
-<button class="blue">&nbsp;&nbsp;Blu&nbsp;&nbsp;</button>
+<button class="blue" onclick="miaFunzione()">&nbsp;&nbsp;Blu&nbsp;&nbsp;</button>
     <button class="red">Rosso</button>
       <div class="search-container">
         <input
@@ -715,40 +715,7 @@
     <script src="main.js"></script>
     <script src="cookie.js"></script>
     <script src="fuochi/script.js"></script>
-    <script>
-      // Function to create a firework explosion
-      function createFirework(x, y) {
-        const colors = ["#ff5733", "#33ff57", "#5733ff", "#ff33e6"]; // You can customize colors
-        const numberOfParticles = 20;
-
-        for (let i = 0; i < numberOfParticles; i++) {
-          const particle = document.createElement("div");
-          particle.className = "particle";
-          document.body.appendChild(particle);
-
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 2 + Math.random() * 5;
-
-          gsap.to(particle, {
-            x: Math.cos(angle) * speed * 100 + x,
-            y: Math.sin(angle) * speed * 100 + y,
-            opacity: 0,
-            backgroundColor: color,
-            duration: 1,
-            ease: "power4.out",
-            onComplete: () => {
-              document.body.removeChild(particle);
-            },
-          });
-        }
-      }
-
-      // Event listener for mouse click
-      document.addEventListener("click", (event) => {
-        createFirework(event.clientX, event.clientY);
-      });
-    </script>
+    
 
     <footer>© Enricozon 2023</footer>
   </body>

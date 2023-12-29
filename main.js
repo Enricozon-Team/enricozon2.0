@@ -49,3 +49,55 @@ function playAudio3() {
   var audio = document.getElementById("audioPlayer3");
   audio.play();
 }
+
+
+// main.js
+
+// Funzione per creare le particelle di confetti
+function createConfetti() {
+  const confettiContainer = document.getElementById('fireworks-container');
+
+  // Numero di particelle da generare
+  const numberOfParticles = 50;
+
+  for (let i = 0; i < numberOfParticles; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.backgroundColor = 'blue'; // Colore blu
+    confettiContainer.appendChild(confetti);
+
+    // Imposta la posizione iniziale e la velocità delle particelle
+    const initialX = Math.random() * window.innerWidth;
+    const initialY = Math.random() * window.innerHeight;
+    confetti.style.left = initialX + 'px';
+    confetti.style.top = initialY + 'px';
+
+    const speed = 1 + Math.random() * 3; // Velocità casuale
+    const angle = Math.random() * 360; // Angolo casuale
+    const radians = (angle * Math.PI) / 180;
+    const velocityX = speed * Math.cos(radians);
+    const velocityY = speed * Math.sin(radians);
+
+    // Animazione delle particelle
+    function animateConfetti() {
+      confetti.style.left = parseFloat(confetti.style.left) + velocityX + 'px';
+      confetti.style.top = parseFloat(confetti.style.top) + velocityY + 'px';
+
+      if (
+        parseFloat(confetti.style.top) > window.innerHeight ||
+        parseFloat(confetti.style.left) > window.innerWidth
+      ) {
+        // Rimuovi la particella quando esce dalla finestra
+        confetti.remove();
+      } else {
+        requestAnimationFrame(animateConfetti);
+      }
+    }
+
+    animateConfetti();
+  }
+}
+
+// Aggiungi l'evento click al bottone
+const confettiButton = document.getElementById('confetti-button');
+confettiButton.addEventListener('click', createConfetti);
