@@ -69,13 +69,6 @@
             />
             <input type="submit" value="Submit" />
           </form>
-
-          <div id="custom-alert">
-            <span id="custom-alert-text"></span>
-            <button class="close-btn" onclick="closeCustomAlert()">
-              Close
-            </button>
-          </div>
         </div>
 
         <script>
@@ -120,26 +113,6 @@
               event.target.rating.value = "";
               event.target.review.value = "";
             });
-
-          function showCustomAlert(message, isError = false) {
-            var alertContainer = document.getElementById("custom-alert");
-            var alertText = document.getElementById("custom-alert-text");
-
-            // Set the message and styling based on whether it's an error
-            alertText.textContent = message;
-            alertContainer.style.backgroundColor = isError
-              ? "#f44336"
-              : "#ffeb3b"; // Red for errors, yellow for success
-            alertContainer.style.display = "block";
-
-            // Hide the alert after 5 seconds (5000 milliseconds)
-            setTimeout(closeCustomAlert, 5000);
-          }
-
-          function closeCustomAlert() {
-            var alertContainer = document.getElementById("custom-alert");
-            alertContainer.style.display = "none";
-          }
         </script>
       </div>
     </div>
