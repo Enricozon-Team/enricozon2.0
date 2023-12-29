@@ -160,25 +160,30 @@ header img {
 #review-form input[type="submit"]:hover {
   background-color: rgb(89, 86, 86);
 }
-.alert-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px;
-  background-color: #f8d7da; /* Bootstrap's alert-danger background color */
-  color: #721c24; /* Bootstrap's alert-danger text color */
+
+#custom-alert {
   display: none;
-  justify-content: space-between;
-  align-items: center;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  background-color: #ffeb3b; /* Yellow background color */
+  color: #000; /* Black text color */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 }
 
-.alert-icon {
-  margin-right: 10px;
-}
-
-.close-btn {
+#custom-alert .close-btn {
   cursor: pointer;
+  background-color: #4caf50; /* Green close button color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  float: right;
 }
 
 .eslisir {
