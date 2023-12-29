@@ -185,3 +185,25 @@ header img {
   border-radius: 3px;
   float: right;
 }
+
+
+.alert-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: #f8d7da; /* Bootstrap's alert-danger background color */
+  color: #721c24; /* Bootstrap's alert-danger text color */
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-icon {
+  margin-right: 10px;
+}
+
+.close-btn {
+  cursor: pointer;
+}
