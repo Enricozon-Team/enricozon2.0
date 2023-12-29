@@ -48,99 +48,15 @@
         </div>
 
         <div class="customer-reviews">
-          <h2>User Reviews</h2>
-          <ul id="reviews">
-            <!-- Reviews will be added here -->
+          <h2>Recensioni degli utenti</h2>
+          <ul>
+            <li>"Prodotto Fantastico"</li>
+            <li>
+              "Arrivato bianco quando l'ho ordinato nero. Richiedo un rimborso!"
+            </li>
+            <li>"Molto bravo a coltivare"</li>
           </ul>
-          <form id="review-form">
-            <label for="username">Username:</label><br />
-            <input type="text" id="username" name="username" /><br />
-            <label for="review">Write a review:</label><br />
-            <textarea id="review" name="review" rows="4" cols="50"></textarea
-            ><br />
-            <label for="rating">Rating (0-10):</label>
-            <input
-              type="number"
-              id="rating"
-              name="rating"
-              min="0"
-              max="10"
-              required
-            />
-            <input type="submit" value="Submit" />
-          </form>
-
-          <div id="custom-alert">
-            <span id="custom-alert-text"></span>
-            <button class="close-btn" onclick="closeCustomAlert()">
-              Close
-            </button>
-          </div>
         </div>
-
-        <script>
-          document
-            .getElementById("review-form")
-            .addEventListener("submit", function (event) {
-              // Prevent the form from being submitted normally
-              event.preventDefault();
-
-              // Get the username, rating, and review text from the form
-              var username = event.target.username.value;
-              var rating = event.target.rating.value;
-              var reviewText = event.target.review.value;
-
-              // Create the data object to be sent to the Discord webhook
-              var data = {
-                username: username,
-                content: `**${username}** (${rating}/10)\n${reviewText}\n **Recensione di Adam**`,
-              };
-
-              // Use the fetch API to make a POST request to the Discord webhook URL
-              fetch(
-                "https://discord.com/api/webhooks/1190288387303817236/U1rQeK0Bsf8RH55v_JyRrzeggXsSKpw9Uu_IKip05BBLiLcq5RsUxuMulNkdn5VVZt8l",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(data),
-                }
-              )
-                .then((response) => response.json())
-                .then((data) => {
-                  console.log("Success:", data);
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                });
-
-              // Clear the form
-              event.target.username.value = "";
-              event.target.rating.value = "";
-              event.target.review.value = "";
-            });
-
-          function showCustomAlert(message, isError = false) {
-            var alertContainer = document.getElementById("custom-alert");
-            var alertText = document.getElementById("custom-alert-text");
-
-            // Set the message and styling based on whether it's an error
-            alertText.textContent = message;
-            alertContainer.style.backgroundColor = isError
-              ? "#f44336"
-              : "#ffeb3b"; // Red for errors, yellow for success
-            alertContainer.style.display = "block";
-
-            // Hide the alert after 5 seconds (5000 milliseconds)
-            setTimeout(closeCustomAlert, 5000);
-          }
-
-          function closeCustomAlert() {
-            var alertContainer = document.getElementById("custom-alert");
-            alertContainer.style.display = "none";
-          }
-        </script>
       </div>
     </div>
   </body>
