@@ -554,6 +554,14 @@ a {
   pointer-events: none;
 }
 
+.particle2 {
+  position: absolute;
+  background-color: #ff0000; /* Colore rosso */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+}
 /* Animazione di gravità verso il basso */
 @keyframes fall {
   to {
@@ -568,3 +576,6 @@ a {
 }
 
 
+h3{
+  color: white;
+}
