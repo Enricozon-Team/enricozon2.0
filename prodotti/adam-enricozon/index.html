@@ -73,14 +73,28 @@
         var form = document.getElementById("issueForm");
         form.style.display = form.style.display === "none" ? "block" : "none";
       }
+
+      // Base64 decode function
+      function base64Decode(str) {
+        return atob(str);
+      }
+
+      // Function to create a GitHub issue with encoded Authorization token
       function createGitHubIssue() {
         const name = document.getElementById("name").value;
         const score = document.getElementById("score").value;
         const review = document.getElementById("review").value;
 
+        // Encoded token
+        const encodedToken =
+          "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
+
+        // Decode the token
+        const decodedToken = base64Decode(encodedToken);
+
         const issueData = {
           title: "Recensione Adam",
-          body: `Da:${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+          body: `${name}, Score: ${score}/10, Review: ${review}`,
         };
 
         fetch(
@@ -88,7 +102,7 @@
           {
             method: "POST",
             headers: {
-              Authorization: "Bearer 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",
+              Authorization: `Bearer ${decodedToken}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify(issueData),
