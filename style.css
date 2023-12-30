@@ -579,3 +579,9 @@ a {
 h3{
   color: white;
 }
+
+.img3{
+margin: -5px;
+  width: 30px; 
+  height: auto;
+}
