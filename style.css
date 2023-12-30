@@ -542,16 +542,29 @@ a {
   background-color: #b30000;
 }
 
-/* style.css */
+/* Aggiungi queste regole al tuo file CSS */
 
-/* Stile delle particelle di confetti */
-.confetti {
+/* Stile delle particelle */
+.particle {
+  position: absolute;
+  background-color: #3498db; /* Colore blu */
   width: 10px;
   height: 10px;
-  background-color: blue;
-  position: fixed;
   border-radius: 50%;
-  transform-origin: 50% 50%;
   pointer-events: none;
-  z-index: 999;
 }
+
+/* Animazione di gravità verso il basso */
+@keyframes fall {
+  to {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+}
+
+/* Classe per applicare l'animazione */
+.falling {
+  animation: fall 3s linear;
+}
+
+
