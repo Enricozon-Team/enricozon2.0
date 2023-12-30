@@ -140,3 +140,12 @@ button[type="button"]:hover,
 button[type="button"]:focus {
   background-color: #0056b3;
 }
+
+.rating{
+  background-color: rgba(0, 0, 0, 0.292);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  max-width: 80%;
+}
