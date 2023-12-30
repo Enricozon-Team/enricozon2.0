@@ -585,3 +585,11 @@ margin: -5px;
   width: 30px; 
   height: auto;
 }
+.img4{
+ 
+    width: 150px; 
+    height: auto;
+   position: absolute;
+   top: 2%;
+   left: 25%;
+  }
