@@ -47,17 +47,72 @@
           </ul>
         </div>
 
-        <div class="customer-reviews">
-          <h2>Recensioni degli utenti</h2>
-          <ul>
-            <li>"Prodotto Fantastico"</li>
-            <li>
-              "Arrivato bianco quando l'ho ordinato nero. Richiedo un rimborso!"
-            </li>
-            <li>"Molto bravo a coltivare"</li>
-          </ul>
-        </div>
+        <button id="openFormButton" onclick="toggleForm()">
+          Nuova Recensione
+        </button>
+
+        <form id="issueForm">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" required /><br />
+
+          <label for="score">Punteggio (0/10):</label>
+          <input type="number" id="score" min="0" max="10" required /><br />
+
+          <label for="review">Recensione:</label>
+          <textarea id="review" rows="4" required></textarea><br />
+
+          <button type="button" onclick="createGitHubIssue()">
+            Invia Recensione
+          </button>
+        </form>
       </div>
     </div>
+
+    <script>
+      function toggleForm() {
+        var form = document.getElementById("issueForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+      }
+      function createGitHubIssue() {
+        const name = document.getElementById("name").value;
+        const score = document.getElementById("score").value;
+        const review = document.getElementById("review").value;
+
+        const issueData = {
+          title: "Recensione Adam",
+          body: `Da:${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+        };
+
+        fetch(
+          "https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues",
+          {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer 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",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(issueData),
+          }
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Error: ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Nuova Recensione Mandata", data);
+            alert(
+              "Recensione inviata con succeso! Puo volerci fino a 24 ore prima che venga aggiunta."
+            );
+          })
+          .catch((error) => {
+            console.error("Error creating issue:", error.message);
+            alert(
+              "Errore nel inviare la recensione! Se l'errore preseguisce, contattate l'assistenza a support@enricozon.mom"
+            );
+          });
+      }
+    </script>
   </body>
 </html>
