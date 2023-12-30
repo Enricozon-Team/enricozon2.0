@@ -5,33 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create GitHub Issue</title>
     <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      button {
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+      }
+
+      #openFormButton {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      #openFormButton:hover,
+      #openFormButton:focus {
+        background-color: #45a049;
+      }
+
       #issueForm {
         display: none;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        max-width: 100%;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button[type="button"] {
+        background-color: #007bff;
+        color: white;
+      }
+
+      button[type="button"]:hover,
+      button[type="button"]:focus {
+        background-color: #0056b3;
       }
     </style>
   </head>
   <body>
     <h1>Create GitHub Issue</h1>
 
-    <button onclick="showForm()">Open Form</button>
+    <button id="openFormButton" onclick="toggleForm()">Open Form</button>
 
     <form id="issueForm">
       <label for="name">Name:</label>
-      <input type="text" id="name" required /><br />
+      <input type="text" id="name" required />
 
       <label for="score">Score (0/10):</label>
-      <input type="number" id="score" min="0" max="10" required /><br />
+      <input type="number" id="score" min="0" max="10" required />
 
       <label for="review">Review:</label>
-      <textarea id="review" rows="4" required></textarea><br />
+      <textarea id="review" rows="4" required></textarea>
 
       <button type="button" onclick="createGitHubIssue()">Submit Issue</button>
     </form>
 
     <script>
-      function showForm() {
-        document.getElementById("issueForm").style.display = "block";
+      function toggleForm() {
+        var form = document.getElementById("issueForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
       }
+
       function createGitHubIssue() {
         const name = document.getElementById("name").value;
         const score = document.getElementById("score").value;
@@ -39,7 +112,7 @@
 
         const issueData = {
           title: "Recensione Adam",
-          body: `Da:${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+          body: `${name}, Score: ${score}/10, Review: ${review}`,
         };
 
         fetch(
@@ -47,7 +120,7 @@
           {
             method: "POST",
             headers: {
-              Authorization: "Bearer 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",
+              Authorization: "Bearer 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",
               "Content-Type": "application/json",
             },
             body: JSON.stringify(issueData),
@@ -60,16 +133,12 @@
             return response.json();
           })
           .then((data) => {
-            console.log("Nuova Recensione Mandata", data);
-            alert(
-              "Recensione inviata con succeso! Puo volerci fino a 24 ore prima che venga aggiunta."
-            );
+            console.log("Issue created successfully:", data);
+            alert("Issue created successfully!");
           })
           .catch((error) => {
             console.error("Error creating issue:", error.message);
-            alert(
-              "Errore nel inviare la recensione! Se l'errore preseguisce, contattate l'assistenza a support@enricozon.mom"
-            );
+            alert("Error creating issue. Please try again.");
           });
       }
     </script>
