@@ -8,9 +8,11 @@ body {
 
 header {
   display: flex;
+  position: fixed;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  top: -5px;
   background-color: #202020;
 }
 
@@ -64,6 +66,8 @@ header img {
 }
 
 .img1 {
+  position: fixed;
+  top: 250px;
   height: 550px;
   width: 500px;
 }
@@ -141,7 +145,7 @@ button[type="button"]:focus {
   background-color: #0056b3;
 }
 
-.rating{
+.rating {
   background-color: rgba(0, 0, 0, 0.292);
   padding: 15px;
   border-radius: 8px;
