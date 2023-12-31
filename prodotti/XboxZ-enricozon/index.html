@@ -44,15 +44,90 @@
           </ul>
         </div>
 
-        <div class="customer-reviews">
-          <h2>Recensioni degli utenti</h2>
-          <ul>
-            <li>"Xbox merda"</li>
-            <li>"Meglio ps6"</li>
-            <li>"Molto bella sopratutto Microsoft flight simulator 2001"</li>
-          </ul>
-        </div>
+        <h2>Recensioni degli utenti</h2>
+        <h6>Aiutaci ad aggiungere recensioni facendone tu una.</h6>
+
+        <h2>Scrivi una recensione</h2>
+        <button id="openFormButton" onclick="toggleForm()">
+          Nuova Recensione
+        </button>
+
+        <form id="issueForm">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" required /><br />
+
+          <label for="score">Punteggio (0/10):</label>
+          <input type="number" id="score" min="0" max="10" required /><br />
+
+          <label for="review">Recensione:</label>
+          <textarea id="review" rows="4" required></textarea><br />
+
+          <button type="button" onclick="createGitHubIssue()">
+            Invia Recensione
+          </button>
+        </form>
       </div>
     </div>
+
+    <script>
+      function toggleForm() {
+        var form = document.getElementById("issueForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+      }
+
+      // Base64 decode function
+      function base64Decode(str) {
+        return atob(str);
+      }
+
+      // Function to create a GitHub issue with encoded Authorization token
+      function createGitHubIssue() {
+        const name = document.getElementById("name").value;
+        const score = document.getElementById("score").value;
+        const review = document.getElementById("review").value;
+
+        // Encoded token
+        const encodedToken =
+          "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
+
+        // Decode the token
+        const decodedToken = base64Decode(encodedToken);
+
+        const issueData = {
+          title: "Recensione Xbox Z",
+          body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+        };
+
+        fetch(
+          "https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${decodedToken}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(issueData),
+          }
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Error: ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Nuova Recensione Mandata", data);
+            alert(
+              "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
+            );
+          })
+          .catch((error) => {
+            console.error("Error creating issue:", error.message);
+            alert(
+              "Errore nell'inviare la recensione! Se l'errore persiste, contattate l'assistenza a support@enricozon.mom"
+            );
+          });
+      }
+    </script>
   </body>
 </html>
