@@ -39,9 +39,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Enricozon" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    
+    <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+
   </head>
+
   <body>
-    <div id="fireworks-container"></div>
+    
     <div id="cookie-popup">
       <p>
         Questo sito web utilizza i cookie per assicurarti la migliore esperienza
@@ -55,6 +59,10 @@
     <button class="open-btn" onclick="openNav()">☰</button>
 
     <div class="sidebar" id="mySidebar">
+      <img class="img4" src="immagini/loghi/enricozonroyale.png" onclick="closeNav()">
+      <br>
+      <br>
+      <br>
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">x</a>
       <a href="util/about/index.html">About</a>
       <a href="cookies.html">Termini e Condizioni</a>
@@ -72,16 +80,10 @@
     </div>
 
     <div class="content">
-      <img class="img1" src="immagini/loghi/enricozoncapodanno20232024.png" />
-
-      <div id="countdown">
-        <div id="days"></div>
-        <div id="hours"></div>
-        <div id="minutes"></div>
-        <div id="seconds"></div>
-      </div>
-      <div id="end-message" style="display: none">Buon Anno!</div>
-
+      <img class="img1" src="immagini/loghi/enricozonroyale.png" onclick="openNav()"/>
+      <h3>Da che parte stai?</h3>
+<button class="blue" onclick="startParticleRain()">&nbsp;&nbsp;&nbsp;&nbsp;Blu&nbsp;&nbsp;<img class="img3" src="immagini/utils/niceroyaleking.png">&nbsp;&nbsp;</button>
+    <button class="red"onclick="startParticleRain2()">Rosso&nbsp;&nbsp;<img class="img3" src="immagini/utils/sadroyaleking.png"></button>
       <div class="search-container">
         <input
           type="text"
@@ -733,6 +735,109 @@
     <script src="main.js"></script>
     <script src="cookie.js"></script>
     <script src="fuochi/script.js"></script>
+    <script>
+      // Funzione per creare la pioggia di particelle
+      function createParticleRain() {
+        // Numero di particelle
+        const numParticles = 40;
+    
+        // Creazione del container per le particelle
+        const particlesContainer = document.createElement('div');
+        particlesContainer.classList.add('particle-rain');
+    
+        // Aggiunta del container al corpo del documento
+        document.body.appendChild(particlesContainer);
+    
+        // Creazione e posizionamento delle particelle nel container
+        for (let i = 0; i < numParticles; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          particlesContainer.appendChild(particle);
+    
+          // Posizionamento casuale delle particelle
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight;
+          particle.style.left = `${x}px`;
+          particle.style.top = `${y}px`;
+    
+          // Durata e animazione delle particelle
+          gsap.to(particle, {
+            duration: 2, // Durata dell'animazione in secondi
+            y: window.innerHeight, // Posizione finale delle particelle (in basso)
+            ease: 'power2.in', // Effetto di gravità
+            onComplete: () => {
+              particlesContainer.removeChild(particle); // Rimuovi la particella quando l'animazione è completa
+            },
+          });
+        }
+      }
+    
+      // Funzione chiamata quando si preme il tasto blu
+      function startParticleRain() {
+        createParticleRain();
+    
+        // Ritarda la creazione della pioggia di particelle di 3 secondi
+        setTimeout(() => {
+          document.body.removeChild(document.querySelector('.particle-rain'));
+        }, 3000);
+      }
+    
+      // Aggiungi un gestore di eventi al tasto blu
+      document.querySelector('.blue').addEventListener('click', startParticleRain);
+    </script>
+    <script>
+      // Funzione per creare la pioggia di particelle
+      function createParticleRain2() {
+        // Numero di particelle
+        const numParticles = 40;
+    
+        // Creazione del container per le particelle
+        const particlesContainer = document.createElement('div');
+        particlesContainer.classList.add('particle-rain');
+    
+        // Aggiunta del container al corpo del documento
+        document.body.appendChild(particlesContainer);
+    
+        // Creazione e posizionamento delle particelle nel container
+        for (let i = 0; i < numParticles; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle2');
+          particlesContainer.appendChild(particle);
+    
+          // Posizionamento casuale delle particelle
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight;
+          particle.style.left = `${x}px`;
+          particle.style.top = `${y}px`;
+    
+          // Durata e animazione delle particelle
+          gsap.to(particle, {
+            duration: 2, // Durata dell'animazione in secondi
+            y: window.innerHeight, // Posizione finale delle particelle (in basso)
+            ease: 'power2.in', // Effetto di gravità
+            onComplete: () => {
+              particlesContainer.removeChild(particle); // Rimuovi la particella quando l'animazione è completa
+            },
+          });
+        }
+      }
+    
+      // Funzione chiamata quando si preme il tasto rosso
+
+      function startParticleRain2() {
+        createParticleRain2();
+    
+        // Ritarda la creazione della pioggia di particelle di 3 secondi
+        setTimeout(() => {
+          document.body.removeChild(document.querySelector('.particle-rain'));
+        }, 3000);
+      }
+
+    
+      // Aggiungi un gestore di eventi al tasto rosso
+      document.querySelector('.red').addEventListener('click', startParticleRain2); 
+    </script>
+    
 
     <footer>© Enricozon 2023</footer>
   </body>
