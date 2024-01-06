@@ -579,3 +579,62 @@ margin: -5px;
    top: 2%;
    left: 26%;
   }
+
+.product-badge-darkpurple {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #301934;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    height: 1.625rem;
+    width: 100%;
+    max-width: 5.5rem;
+    padding-right: 0.5rem;
+    position: relative;
+    z-index: 1;
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    top: 2.5rem;
+    left: 0.9rem;
+    border-radius: 0.2rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.product-badge-darkpurple:hover {
+    transform: scale(1.1);
+  }
+  
+.product-badge-darkpurple.choice {
+    background-color: #23303e;
+    color: #fff;
+    max-width: 8rem;
+    margin-right: 0.25rem;
+  }
+  
+.product-badge-darkpurple.choice > span {
+    color: #301934;
+  }
+  
+.product-badge-darkpurple.choice sup {
+    position: relative;
+    font-size: 0.5rem;
+  }
+  
+.grid-prime {
+    flex-wrap: wrap;
+  }
+  
+.img-darkpurple {
+    margin: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.img-darkpurple:hover {
+    box-shadow: 0 0 10px #301934, 0 0 40px #301934, 0 0 80px #301934;
+    transition-delay: 0.02s;
+    transform: scale(1.1);
+  }
+  
