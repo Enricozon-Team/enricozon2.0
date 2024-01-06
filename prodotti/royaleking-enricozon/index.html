@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royale King</title>
+    <link rel="icon" href="logo.jpeg" />
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+    <header>
+      <a href="https://enricozon.mom"
+        ><img
+          src="https://www.enricozon.mom/immagini/loghi/enricozonroyale.png"
+      /></a>
+    </header>
+
+    <div class="product-container">
+      <div class="product-image">
+        <img class="img1" src="nicko3.jpg" alt="Product Image" />
+      </div>
+
+      <div class="product-details">
+        <h1>Royale King</h1>
+        <p>
+          <strong>Prezzo:</strong>
+          <img src="clash-royale-elixir-icon.png.png" class="eslisir" alt="Elixir Icon">
+         3
+        </p>
+        <a href="buy.html"><div class="buy-button">Buy Now</div></a>
+
+        <div class="product-description">
+          <h2>Descrizione del Prodotto</h2>
+          <p>Il King di Clash Royale</p>
+        </div>
+
+        <div class="key-features">
+          <h2>Qualità</h2>
+          <ul>
+            <li>Spara dal cannone</li>
+            <li>Ti fa bestemmiare</li>
+          </ul>
+        </div>
+
+        <h2>Recensioni degli utenti</h2>
+        <div class="rating">
+          <p>afghanistan: (10/10)</p>
+          <p>4k ultra hd, che qualità!</p>
+        </div>
+        <br />
+
+        <h2>Scrivi una recensione</h2>
+        <button id="openFormButton" onclick="toggleForm()">
+          Nuova Recensione
+        </button>
+
+        <form id="issueForm">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" required /><br />
+
+          <label for="score">Punteggio (0/10):</label>
+          <input type="number" id="score" min="0" max="10" required /><br />
+
+          <label for="review">Recensione:</label>
+          <textarea id="review" rows="4" required></textarea><br />
+
+          <button type="button" onclick="createGitHubIssue()">
+            Invia Recensione
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function toggleForm() {
+        var form = document.getElementById("issueForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+      }
+
+      // Base64 decode function
+      function base64Decode(str) {
+        return atob(str);
+      }
+
+      // Function to create a GitHub issue with encoded Authorization token
+      function createGitHubIssue() {
+        const name = document.getElementById("name").value;
+        const score = document.getElementById("score").value;
+        const review = document.getElementById("review").value;
+
+        // Encoded token
+        const encodedToken =
+          "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
+
+        // Decode the token
+        const decodedToken = base64Decode(encodedToken);
+
+        const issueData = {
+          title: "Recensione King Royale",
+          body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+        };
+
+        fetch(
+          "https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${decodedToken}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(issueData),
+          }
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Error: ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Nuova Recensione Mandata", data);
+            alert(
+              "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
+            );
+          })
+          .catch((error) => {
+            console.error("Error creating issue:", error.message);
+            alert(
+              "Errore nell'inviare la recensione! Se l'errore persiste, contattate l'assistenza a support@enricozon.mom"
+            );
+          });
+      }
+    </script>
+  </body>
+</html>
