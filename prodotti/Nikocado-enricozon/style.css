@@ -1,23 +1,10 @@
 body {
+  background-color: #202020;
   font-family: Arial, sans-serif;
   color: #ffffff;
   margin: 0;
   padding: 0;
-
-  background: url(https://www.enricozon.mom/royale/crown.png);
-  width: 100%;
-  height: 100vh;
-
-  justify-content: center;
-  animation: animazione 100s linear infinite;
 }
-
-@keyframes animazione {
-  100% {
-    background-position: 0px -3000px;
-  }
-}
-
 header {
   display: flex;
   justify-content: space-between;
