@@ -3,6 +3,19 @@ body {
   background-color: #202020;
   text-align: center;
   overflow-x: hidden;
+
+  background: url(royale/crown.png);
+  width: 100%;
+  height: 100vh;
+
+  justify-content: center;
+  animation: animazione 100s linear infinite;
+}
+
+@keyframes animazione {
+  100%{
+      background-position: 0px -3000px;
+  }
 }
 
 .sidebar {
@@ -497,3 +510,86 @@ a {
     background-position: 0% 50%;
   }
 }
+
+
+.blue {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.blue:hover {
+  background-color: #0056b3;
+}
+
+.red {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.red:hover {
+  background-color: #b30000;
+}
+
+/* Aggiungi queste regole al tuo file CSS */
+
+/* Stile delle particelle */
+.particle {
+  position: absolute;
+  background-color: #3498db; /* Colore blu */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle2 {
+  position: absolute;
+  background-color: #ff0000; /* Colore rosso */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* Animazione di gravità verso il basso */
+@keyframes fall {
+  to {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+}
+
+/* Classe per applicare l'animazione */
+.falling {
+  animation: fall 3s linear;
+}
+
+
+h3{
+  color: white;
+}
+
+.img3{
+margin: -5px;
+  width: 30px; 
+  height: auto;
+}
+.img4{
+ 
+    width: 150px; 
+    height: auto;
+   position: absolute;
+   top: 2%;
+   left: 26%;
+  }
