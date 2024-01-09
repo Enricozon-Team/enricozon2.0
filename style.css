@@ -469,35 +469,6 @@ a {
   flex-wrap: wrap;
 }
 
-#countdown {
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  font-size: 2em;
-  gap: 20px; /* Adjust this value to change the space between the numbers */
-}
-
-#end-message {
-  font-size: 3em;
-  text-align: center;
-  background: linear-gradient(270deg, #00f, #800080, #add8e6);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: Gradient 2s alternate infinite;
-}
-
-@keyframes Gradient {
-  0% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-
 .blue {
   background-color: #007bff;
   color: #fff;
@@ -528,113 +499,77 @@ a {
   background-color: #b30000;
 }
 
-/* Aggiungi queste regole al tuo file CSS */
-
-/* Stile delle particelle */
-.particle {
-  position: absolute;
-  background-color: #3498db; /* Colore blu */
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.particle2 {
-  position: absolute;
-  background-color: #ff0000; /* Colore rosso */
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-/* Animazione di gravità verso il basso */
-@keyframes fall {
-  to {
-    transform: translateY(500px);
-    opacity: 0;
-  }
-}
-
-/* Classe per applicare l'animazione */
-.falling {
-  animation: fall 3s linear;
-}
-
-
-h3{
+h3 {
   color: white;
 }
 
-.img3{
-margin: -5px;
-  width: 30px; 
+.img3 {
+  margin: -5px;
+  width: 30px;
   height: auto;
 }
-.img4{
- 
-    width: 150px; 
-    height: auto;
-   position: absolute;
-   top: 2%;
-   left: 26%;
-  }
+.img4 {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 2%;
+  left: 26%;
+}
 
 .product-badge-darkpurple {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #301934;
-    color: #fff;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    height: 1.625rem;
-    width: 100%;
-    max-width: 5.5rem;
-    padding-right: 0.5rem;
-    position: relative;
-    z-index: 1;
-    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
-    top: 2.5rem;
-    left: 0.9rem;
-    border-radius: 0.2rem;
-    transition: transform 0.3s ease-in-out;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #301934;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  height: 1.625rem;
+  width: 100%;
+  max-width: 5.5rem;
+  padding-right: 0.5rem;
+  position: relative;
+  z-index: 1;
+  -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  top: 2.5rem;
+  left: 0.9rem;
+  border-radius: 0.2rem;
+  transition: transform 0.3s ease-in-out;
+}
+
 .product-badge-darkpurple:hover {
-    transform: scale(1.1);
-  }
-  
+  transform: scale(1.1);
+}
+
 .product-badge-darkpurple.choice {
-    background-color: #23303e;
-    color: #fff;
-    max-width: 8rem;
-    margin-right: 0.25rem;
-  }
-  
+  background-color: #23303e;
+  color: #fff;
+  max-width: 8rem;
+  margin-right: 0.25rem;
+}
+
 .product-badge-darkpurple.choice > span {
-    color: #301934;
-  }
-  
+  color: #301934;
+}
+
 .product-badge-darkpurple.choice sup {
-    position: relative;
-    font-size: 0.5rem;
-  }
-  
+  position: relative;
+  font-size: 0.5rem;
+}
+
 .grid-prime {
-    flex-wrap: wrap;
-  }
-  
+  flex-wrap: wrap;
+}
+
 .img-darkpurple {
-    margin: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
+  margin: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
 .img-darkpurple:hover {
-    box-shadow: 0 0 10px #301934, 0 0 40px #301934, 0 0 80px #301934;
-    transition-delay: 0.02s;
-    transform: scale(1.1);
-  }
-  
+  box-shadow: 0 0 10px #301934, 0 0 40px #301934, 0 0 80px #301934;
+  transition-delay: 0.02s;
+  transform: scale(1.1);
+}
