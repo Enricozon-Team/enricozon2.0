@@ -74,7 +74,7 @@ header img {
   }
 
   .product-image{
-    margin-top: 20%;
+    margin-top: -20%;
   }
   .product-details {
     flex: 1 1 100%;
