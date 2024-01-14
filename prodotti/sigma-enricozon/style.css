@@ -22,12 +22,14 @@ header img {
   justify-content: space-around;
   align-items: center;
   margin: 50px;
+  
 }
 
 .product-image {
   flex: 1 1 50%;
   max-width: 50%;
   margin-right: -500px; /* Adjust the margin to move it more to the right */
+  margin-top: -10%;
 }
 
 .product-image img {
