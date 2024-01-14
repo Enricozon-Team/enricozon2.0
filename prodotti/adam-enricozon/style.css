@@ -27,6 +27,7 @@ header img {
 .product-image {
   flex: 1 1 50%;
   max-width: 50%;
+  margin-top: -23%;
   margin-right: -500px; /* Adjust the margin to move it more to the right */
 }
 
