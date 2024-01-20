@@ -28,6 +28,7 @@ header img {
   flex: 1 1 50%;
   max-width: 50%;
   margin-right: -500px; /* Adjust the margin to move it more to the right */
+  margin-top: -30%;
 }
 
 .product-image img {
@@ -72,7 +73,10 @@ header img {
     align-items: center;
   }
 
-  .product-image,
+  .product-image{
+    margin-top: 10%;
+    margin-left: 10%;
+  }
   .product-details {
     flex: 1 1 100%;
     margin-right: 0;
