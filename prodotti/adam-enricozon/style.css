@@ -76,8 +76,15 @@ header img {
   }
 
   .product-image-container {
+    width: 95%;
+    margin-right: auto;
+  }
+
+  .img1{
     width: 100%;
-    margin-right: 0;
+    height: 100%;
+    margin-right: auto;
+
   }
 
   .product-details {
