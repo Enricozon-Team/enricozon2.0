@@ -94,38 +94,29 @@ header img {
     align-items: center;
   }
 
-  .product-image-container {
+  .product-image-container,
+  .product-details {
     width: 95%;
     margin-right: auto;
   }
 
-  .img1{
+  .img1 {
     width: 100%;
-    height: 100%;
+    height: auto;
     margin-right: auto;
-
-  }
-
-  .product-details {
-    width: 100%;
   }
 
   .product-ratings {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: auto;
-   
   }
 
   .rating {
-    background-color: rgba(0, 0, 0, 0.292);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 280px;
-    max-width: 80%;
+    width: 100%; /* Adjusted to full width on smaller screens */
+    max-width: none;
   }
 }
-
+ 
 button {
   border: none;
   padding: 10px 20px;

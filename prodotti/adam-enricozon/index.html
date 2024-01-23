@@ -18,8 +18,7 @@
   <div class="product-container">
     <div class="product-image-container">
       <img class="img1" src="adam.jpg" alt="Product Image" />
-   
-      <div class="product-ratings">
+      <div class="product-ratings" id="ratingsContainer">
         <h2>Recensioni degli utenti</h2>
         <div class="rating">
           <p>Filippo Turetta: (10/10)</p>
@@ -43,6 +42,7 @@
 
         
       </div>
+     
     </div>
     <div class="product-details">
       <h1>Adam il Nero</h1>
@@ -136,6 +136,27 @@
           );
         });
     }
+
+
+    function toggleForm() {
+    var form = document.getElementById("issueForm");
+    var ratingsContainer = document.getElementById("ratingsContainer");
+    
+    form.style.display = form.style.display === "none" ? "block" : "none";
+
+    // Verifica la larghezza dello schermo
+    if (window.innerWidth <= 768) {
+      // Se la larghezza dello schermo è inferiore o uguale a 768px, sposta il container delle recensioni sotto il bottone
+      form.parentNode.insertBefore(ratingsContainer, form.nextSibling);
+    } else {
+      // Altrimenti, sposta il container delle recensioni sotto l'immagine
+      document.querySelector(".product-image-container").appendChild(ratingsContainer);
+    }
+  }
+
+  // ... Resto dello script ...
+
   </script>
+
 </body>
 </html>
