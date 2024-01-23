@@ -137,25 +137,28 @@
         });
     }
 
-
     function toggleForm() {
     var form = document.getElementById("issueForm");
     var ratingsContainer = document.getElementById("ratingsContainer");
     
     form.style.display = form.style.display === "none" ? "block" : "none";
 
-    // Verifica la larghezza dello schermo
+    // Verifica la larghezza dello schermo solo su dispositivi mobili (<= 768px)
     if (window.innerWidth <= 768) {
       // Se la larghezza dello schermo è inferiore o uguale a 768px, sposta il container delle recensioni sotto il bottone
       form.parentNode.insertBefore(ratingsContainer, form.nextSibling);
     } else {
-      // Altrimenti, sposta il container delle recensioni sotto l'immagine
+      // Altrimenti, lascia il container delle recensioni nella sua posizione originale (sotto l'immagine)
       document.querySelector(".product-image-container").appendChild(ratingsContainer);
     }
   }
 
-  // ... Resto dello script ...
+  // Invoca la funzione al caricamento della pagina
+  window.onload = function() {
+    toggleForm();
+  };
 
+  // ... Resto dello script ...
   </script>
 
 </body>
