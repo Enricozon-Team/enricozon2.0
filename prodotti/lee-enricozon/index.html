@@ -19,6 +19,10 @@
     <div class="product-container">
       <div class="product-image">
         <img class="img1" src="lee.jpg" alt="Product Image" />
+        <div class="product-ratings" id="ratingsContainer">
+          <h2>Recensioni degli utenti</h2>
+          <p>Nessuna recensione, aggiungine una tu!</p>
+        </div>
       </div>
 
       <div class="product-details">
@@ -39,8 +43,6 @@
           </ul>
         </div>
 
-        <h2>Recensioni degli utenti</h2>
-        <h6>Aiutaci ad aggiungere recensioni facendone tu una.</h6>
 
         <h2>Scrivi una recensione</h2>
         <button id="openFormButton" onclick="toggleForm()">
@@ -123,6 +125,26 @@
             );
           });
       }
+      function toggleForm() {
+    var form = document.getElementById("issueForm");
+    var ratingsContainer = document.getElementById("ratingsContainer");
+    
+    form.style.display = form.style.display === "none" ? "block" : "none";
+
+    // Verifica la larghezza dello schermo solo su dispositivi mobili (<= 768px)
+    if (window.innerWidth <= 768) {
+      // Se la larghezza dello schermo è inferiore o uguale a 768px, sposta il container delle recensioni sotto il bottone
+      form.parentNode.insertBefore(ratingsContainer, form.nextSibling);
+    } else {
+      // Altrimenti, lascia il container delle recensioni nella sua posizione originale (sotto l'immagine)
+      document.querySelector(".product-image-container").appendChild(ratingsContainer);
+    }
+  }
+
+  // Invoca la funzione al caricamento della pagina
+  window.onload = function() {
+    toggleForm();
+  };
     </script>
   </body>
 </html>
