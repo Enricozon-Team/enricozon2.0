@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -19,27 +20,37 @@ header img {
 .product-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between; /* Adjusted to space-between */
   margin: 50px;
 }
 
-.product-image {
-  flex: 1 1 50%;
-  max-width: 50%;
-  margin-right: -500px; /* Adjust the margin to move it more to the right */
+.product-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  margin-right: 2%;
 }
 
-.product-image img {
+.product-image-container {
+  margin-top: 20px;
+}
+
+.product-ratings {
+  margin-top: 30px;
+  margin-left: 70%;
+}
+
+.product-image {
   width: 100%;
-  max-width: 450px;
-  height: 500px;
-  object-fit: cover;
+  height: auto;
+  max-width: 50%;
+  margin-right: -500px; /* Adjust the margin to move it more to the right */
+  margin-top: -30%;
 }
 
 .product-details {
-  flex: 1 1 40%;
-  max-width: 40%;
+  width: 45%;
   padding: 20px;
 }
 
@@ -62,8 +73,18 @@ header img {
 }
 
 .img1 {
-  height: 550px;
+  height: 600px;
   width: 500px;
+  margin-right: -30%;
+}
+
+.rating {
+  background-color: rgba(0, 0, 0, 0.292);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  max-width: 80%;
 }
 
 @media screen and (max-width: 768px) {
@@ -72,11 +93,26 @@ header img {
     align-items: center;
   }
 
-  .product-image,
+  .product-image-container,
   .product-details {
-    flex: 1 1 100%;
-    margin-right: 0;
-    max-width: 100%;
+    width: 95%;
+    margin-right: auto;
+  }
+
+  .img1 {
+    width: 100%;
+    height: auto;
+    margin-right: auto;
+  }
+
+  .product-ratings {
+    margin-top: 20px;
+    margin-left: auto;
+  }
+
+  .rating {
+    width: 100%; /* Adjusted to full width on smaller screens */
+    max-width: none;
   }
 }
 
@@ -137,15 +173,6 @@ button[type="button"] {
 button[type="button"]:hover,
 button[type="button"]:focus {
   background-color: #0056b3;
-}
-
-.rating {
-  background-color: rgba(0, 0, 0, 0.292);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  max-width: 80%;
 }
 
 .eslisir {
