@@ -180,7 +180,7 @@ button {
     }
 
     .rating {
-        max-width: 70%; /* Riduci la larghezza massima */
+        max-width: 80%; /* Riduci la larghezza massima */
         margin-left: 5%; /* Allinea a destra */
         margin-right: auto; /* Allinea a sinistra */
         padding: 10px; /* Riduci il padding */
