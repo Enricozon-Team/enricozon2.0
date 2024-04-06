@@ -58,9 +58,13 @@
           <label for="review">Recensione:</label>
           <textarea id="review" rows="4" required></textarea><br />
 
-          <button type="button" onclick="createGitHubIssue()">
-            Invia Recensione
-          </button>
+        <button
+          type="button"
+          id="submitButton"
+          onclick="delayButton(); createGitHubIssue()"
+        >
+          Invia Recensione
+        </button>
         </form>
       </div>
     </div>
