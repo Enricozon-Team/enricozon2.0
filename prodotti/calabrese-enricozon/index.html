@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prodotto</title>
-  <link rel="icon" href="https://enricozon.mom/immagini/loghi/logo.jpeg" />
-  <link rel="stylesheet" href="tag.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prodotto</title>
+    <link rel="icon" href="https://enricozon.mom/immagini/loghi/logo.jpeg" />
+    <link rel="stylesheet" href="tag.css" />
 
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
-  />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+    />
 
   <meta name="description" content="Miglior mercato di sempre" />
   <meta property="og:title" content="Enricozon" />
@@ -41,53 +41,63 @@
 </head>
 <body>
     <header>
-        <a href="https://enricozon.mom"
-          ><img
-            src="https://enricozon.mom/immagini/logoattuale/enricozon.png"
-        /></a>
-      </header>
-  
-	<div class="container">
-		<div class="product-image">
-			<img src="calabrese.jpg" alt="Product Image">
-		</div>
-		
-		<div class="product-info">
-			<h1 class="product-title">Il Calabrese</h1>
-			<p class="product-price">$5</p>
-			<p class="product-description">Un normalissimo abitante della Calabria</p>
-			<a href="https://enricozon.mom/buy/buy.html" class="cart-btn">Buy</a>
-		</div>
-	</div>
-<div class="new-r">   
-    <h2>Scrivi una recensione</h2>
-        <button id="openFormButton" onclick="toggleForm()">
-          Nuova Recensione
+      <a href="https://enricozon.mom"
+        ><img src="https://enricozon.mom/immagini/logoattuale/enricozon.png"
+      /></a>
+    </header>
+
+    <div class="container">
+      <div class="product-image">
+        <img src="calabrese.jpg" alt="Product Image" />
+      </div>
+
+      <div class="product-info">
+        <h1 class="product-title">Il Calabrese</h1>
+        <p class="product-price">$5</p>
+        <p class="product-description">
+          Un normalissimo abitante della Calabria
+        </p>
+        <a href="https://enricozon.mom/buy/buy.html" class="cart-btn">Buy</a>
+      </div>
+    </div>
+    <div class="new-r">
+      <h2>Scrivi una recensione</h2>
+      <button id="openFormButton" onclick="toggleForm()">
+        Nuova Recensione
+      </button>
+
+      <form id="issueForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required /><br />
+
+        <label for="score">Punteggio (0/10):</label>
+        <input type="number" id="score" min="0" max="10" required /><br />
+
+        <label for="review">Recensione:</label>
+        <textarea id="review" rows="4" required></textarea><br />
+
+        <button
+          type="button"
+          id="submitButton"
+          onclick="delayButton(); createGitHubIssue()"
+        >
+          Invia Recensione
         </button>
-
-        <form id="issueForm">
-          <label for="name">Nome:</label>
-          <input type="text" id="name" required /><br />
-
-          <label for="score">Punteggio (0/10):</label>
-          <input type="number" id="score" min="0" max="10" required /><br />
-
-          <label for="review">Recensione:</label>
-          <textarea id="review" rows="4" required></textarea><br />
-
-          <button type="button" onclick="createGitHubIssue()">
-            Invia Recensione
-          </button>
-        </form>
-        </div>
-    <h1 class="rating-title">Recensioni degli utenti </h1>
+      </form>
+    </div>
+    <h1 class="rating-title">Recensioni degli utenti</h1>
     <div class="rating">
       <p>Uno Del Catanzaro: (7/10)</p>
-      <p>Ottimo prodotto, mi è entrato in casa alle 4 di notte a vendermi droga, che affare!</p>
+      <p>
+        Ottimo prodotto, mi è entrato in casa alle 4 di notte a vendermi droga,
+        che affare!
+      </p>
     </div>
     <br />
-</body>
-<script>
+  </body>
+  <script>
+    let delayActive = false;
+
     function toggleForm() {
       var form = document.getElementById("issueForm");
       form.style.display = form.style.display === "none" ? "block" : "none";
@@ -116,17 +126,14 @@
         body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
       };
 
-      fetch(
-        "https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${decodedToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(issueData),
-        }
-      )
+      fetch("https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${decodedToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(issueData),
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
@@ -148,4 +155,3 @@
     }
   </script>
 </html>
-
