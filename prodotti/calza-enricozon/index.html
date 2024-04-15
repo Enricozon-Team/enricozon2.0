@@ -1,135 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calza Enricozon</title>
-    <link rel="icon" href="/immagini/loghi/logo.jpeg" />
-    <link rel="stylesheet" href="style.css" />
-</head>
+    <title>Prodotto</title>
+    <link rel="icon" href="https://enricozon.mom/immagini/loghi/logo.jpeg" />
+    <link rel="stylesheet" href="tag.css" />
 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+    />
+
+    <meta name="description" content="Miglior mercato di sempre" />
+    <meta property="og:title" content="Enricozon" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Miglior mercato di sempre. Creato da: cranci, enriccio, Cholito, Tanoshi, TheProcionCatIta"
+    />
+    <meta
+      property="og:image"
+      content="https://www.enricozon.mom/immagini/loghi/logo.jpeg"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="apple-touch-icon"
+      href="https://enricozon.mom/immagini/loghi/logo.jpeg"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="https://enricozon.mom/immagini/loghi/logo.jpeg"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Enricozon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Enricozon" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  </head>
+  <body>
     <header>
-      <a href="https://enricozon.mom">
-        <img
-          src="https://enricozon.mom/immagini/loghi/enricozonbt.png"
-        />
-      </a>
+      <a href="https://enricozon.mom"
+        ><img src="https://enricozon.mom/immagini/logoattuale/enricozon.png"
+      /></a>
     </header>
 
-    <div class="product-container">
+    <div class="container">
       <div class="product-image">
-        <img class="img1" src="calza enricozon.png" alt="Product Image" />
+        <img src="calza enricozon.png" alt="Product Image" />
       </div>
 
-      <div class="product-details">
-        <h1>Calza Enricozon</h1>
-        <p><strong>Prezzo:</strong> $23.99</p>
-        <a href="buy.html"><div class="buy-button">Buy Now</div></a>
-
-        <div class="product-description">
-          <h2>Descrizione del Prodotto</h2>
-          <p>
-            Calza Enricozon, la calza ufficiale di Enricozon
-          </p>
-        </div>
-
-        <div class="key-features">
-          <h2>Benefici</h2>
-          <ul>
-            <li>Un bel regalo per l'epifania</li>
-            <li>È un ottima calza</li>
-            <li>Ha dei dolci buoni dentro</li>
-          </ul>
-        </div>
-
-        <h2>Recensioni degli utenti</h2>
-        <div class="rating">
-          <p>fototeta: (10/10)</p>
-          <p>ottimo prodotto, al suo interno ho trovato 20 Kili di Marijuana!</p>
-        </div>
-        <br />
-        
-        <h2>Scrivi una recensione</h2>
-        <button id="openFormButton" onclick="toggleForm()">
-          Nuova Recensione
-        </button>
-
-        <form id="issueForm">
-          <label for="name">Nome:</label>
-          <input type="text" id="name" required /><br />
-
-          <label for="score">Punteggio (0/10):</label>
-          <input type="number" id="score" min="0" max="10" required /><br />
-
-          <label for="review">Recensione:</label>
-          <textarea id="review" rows="4" required></textarea><br />
-
-          <button type="button" onclick="createGitHubIssue()">
-            Invia Recensione
-          </button>
-        </form>
+      <div class="product-info">
+        <h1 class="product-title">Calza Enricozon</h1>
+        <p class="product-price">$23.99</p>
+        <p class="product-description">
+          Ecco a voi la calza ufficiale di Enricozon, bella vero?
+        </p>
+        <a href="https://enricozon.mom/buy/buy.html" class="cart-btn">Buy</a>
       </div>
     </div>
+    <div class="new-r">
+      <h2>Scrivi una recensione</h2>
+      <button id="openFormButton" onclick="toggleForm()">
+        Nuova Recensione
+      </button>
 
-    <script>
-      function toggleForm() {
-        var form = document.getElementById("issueForm");
-        form.style.display = form.style.display === "none" ? "block" : "none";
-      }
+      <form id="issueForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required /><br />
 
-      // Base64 decode function
-      function base64Decode(str) {
-        return atob(str);
-      }
+        <label for="score">Punteggio (0/10):</label>
+        <input type="number" id="score" min="0" max="10" required /><br />
 
-      // Function to create a GitHub issue with encoded Authorization token
-      function createGitHubIssue() {
-        const name = document.getElementById("name").value;
-        const score = document.getElementById("score").value;
-        const review = document.getElementById("review").value;
+        <label for="review">Recensione:</label>
+        <textarea id="review" rows="4" required></textarea><br />
 
-        // Encoded token
-        const encodedToken =
-          "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
-
-        // Decode the token
-        const decodedToken = base64Decode(encodedToken);
-
-        const issueData = {
-          title: "Recensione Calza",
-          body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
-        };
-
-        fetch(
-          "https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues",
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${decodedToken}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(issueData),
-          }
-        )
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`Error: ${response.statusText}`);
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log("Nuova Recensione Mandata", data);
-            alert(
-              "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
-            );
-          })
-          .catch((error) => {
-            console.error("Error creating issue:", error.message);
-            alert(
-              "Errore nell'inviare la recensione! Se l'errore persiste, contattate l'assistenza a support@enricozon.mom"
-            );
-          });
-      }
-    </script>
+        <button
+          type="button"
+          id="submitButton"
+          onclick="delayButton(); createGitHubIssue()"
+        >
+          Invia Recensione
+        </button>
+      </form>
+    </div>
+    <h1 class="rating-title">Recensioni degli utenti</h1>
+    <div class="rating">
+      <p>fototeta: (10/10)</p>
+      <p>ottimo prodotto, al suo interno ho trovato 20 Kili di Marijuana!</p>
+    </div>
+    <br />
   </body>
+  <script>
+    let delayActive = false;
+
+    function toggleForm() {
+      var form = document.getElementById("issueForm");
+      form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+
+    // Base64 decode function
+    function base64Decode(str) {
+      return atob(str);
+    }
+
+    // Function to create a GitHub issue with encoded Authorization token
+    function createGitHubIssue() {
+      const name = document.getElementById("name").value;
+      const score = document.getElementById("score").value;
+      const review = document.getElementById("review").value;
+
+      // Encoded token
+      const encodedToken =
+        "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
+
+      // Decode the token
+      const decodedToken = base64Decode(encodedToken);
+
+      const issueData = {
+        title: "Recensione Calza Enricozon",
+        body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+      };
+
+      fetch("https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${decodedToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(issueData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Nuova Recensione Mandata", data);
+          alert(
+            "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
+          );
+        })
+        .catch((error) => {
+          console.error("Error creating issue:", error.message);
+          alert(
+            "Errore nell'inviare la recensione! Se l'errore persiste, contattate l'assistenza a support@enricozon.mom"
+          );
+        });
+    }
+
+    // Add delay to the button click
+    function delayButton() {
+      if (delayActive) {
+        console.log("Nuova Recensione Mandata", data);
+        alert(
+          "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
+        );
+      }
+
+      delayActive = true;
+      document.getElementById("submitButton").disabled = true;
+
+      setTimeout(function () {
+        document.getElementById("submitButton").disabled = false;
+        delayActive = false;
+      }, 60000); // 1 minute delay
+    }
+  </script>
 </html>

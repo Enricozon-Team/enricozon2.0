@@ -64,18 +64,24 @@
           <label for="review">Recensione:</label>
           <textarea id="review" rows="4" required></textarea><br />
 
-          <button type="button" onclick="createGitHubIssue()">
-            Invia Recensione
-          </button>
+        <button
+          type="button"
+          id="submitButton"
+          onclick="delayButton(); createGitHubIssue()"
+        >
+          Invia Recensione
+        </button>
         </form>
       </div>
     </div>
 
     <script>
-      function toggleForm() {
-        var form = document.getElementById("issueForm");
-        form.style.display = form.style.display === "none" ? "block" : "none";
-      }
+    let delayActive = false;
+
+    function toggleForm() {
+      var form = document.getElementById("issueForm");
+      form.style.display = form.style.display === "none" ? "block" : "none";
+    }
 
       // Base64 decode function
       function base64Decode(str) {
@@ -111,25 +117,43 @@
             body: JSON.stringify(issueData),
           }
         )
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(`Error: ${response.statusText}`);
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log("Nuova Recensione Mandata", data);
-            alert(
-              "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
-            );
-          })
-          .catch((error) => {
-            console.error("Error creating issue:", error.message);
-            alert(
-              "Errore nell'inviare la recensione! Se l'errore persiste, contattate l'assistenza a support@enricozon.mom"
-            );
-          });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Nuova Recensione Mandata", data);
+          alert(
+            "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
+          );
+        })
+        .catch((error) => {
+          console.error("Error creating issue:", error.message);
+          alert(
+            "Errore nell'inviare la recensione! Se l'errore persiste, contattate l'assistenza a support@enricozon.mom"
+          );
+        });
+    }
+
+    // Add delay to the button click
+    function delayButton() {
+      if (delayActive) {
+        console.log("Nuova Recensione Mandata", data);
+        alert(
+          "Recensione inviata con successo! Possono volerci fino a 24 ore prima che venga aggiunta."
+        );
       }
+
+      delayActive = true;
+      document.getElementById("submitButton").disabled = true;
+
+      setTimeout(function () {
+        document.getElementById("submitButton").disabled = false;
+        delayActive = false;
+      }, 60000); // 1 minute delay
+    }
     </script>
   </body>
 </html>
