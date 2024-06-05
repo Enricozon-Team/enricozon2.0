@@ -1,71 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MrBeast</title>
-    <link rel="icon" href="/immagini/loghi/logo.jpeg" />
+    <title>Prodotto</title>
+    <link rel="icon" href="https://enricozon.mom/immagini/loghi/logo.jpeg" />
+    <link rel="stylesheet" href="tag.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+    />
+
+    <meta name="description" content="Miglior mercato di sempre" />
+    <meta property="og:title" content="Enricozon" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Miglior mercato di sempre. Creato da: cranci, enriccio, Cholito, Tanoshi, TheProcionCatIta"
+    />
+    <meta
+      property="og:image"
+      content="https://www.enricozon.mom/immagini/loghi/logo.jpeg"
+    />
     <link rel="stylesheet" href="style.css" />
-
-</head>
-
+    <link
+      rel="apple-touch-icon"
+      href="https://enricozon.mom/immagini/loghi/logo.jpeg"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="https://enricozon.mom/immagini/loghi/logo.jpeg"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Enricozon" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Enricozon" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  </head>
+  <body>
     <header>
       <a href="https://enricozon.mom"
-        ><img
-          src="https://enricozon.mom/immagini/loghi/enricozonbt.png"
+        ><img src="https://enricozon.mom/immagini/logoattuale/enricozon.png"
       /></a>
     </header>
 
-    <div class="product-container">
+    <div class="container">
       <div class="product-image">
-        <img class="img1" src="mrbeast.jpg" alt="Product Image" />
+        <img src="mrbeast.jpg" alt="Product Image" />
       </div>
 
-      <div class="product-details">
-        <h1>MrBeast</h1>
-        <p><strong>Prezzo:</strong> $10,000,000.00</p>
-        <a href="buy.html"><div class="buy-button">Buy Now</div></a>
+      <div class="product-info">
+        <h1 class="product-title">Mr Beast</h1>
+        <p class="product-price">$10.000.00</p>
+        <p class="product-description">
+          Mr Beast, uno dei ventenni più ricchi al mondo, è un po' caro ma segue gli ordini.
+        </p>
+        <a href="https://enricozon.mom/buy/buy.html" class="cart-btn">Buy</a>
+      </div>
+    </div>
+    <div class="new-r">
+      <h2>Scrivi una recensione</h2>
+      <button id="openFormButton" onclick="toggleForm()">
+        Nuova Recensione
+      </button>
 
-        <div class="product-description">
-          <h2>Descrizione del Prodotto</h2>
-          <p>
-            MrBeast, uno dei ventenni più ricchi al mondo, è un po' caro ma
-            segue gli ordini.
-          </p>
-        </div>
+      <form id="issueForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required /><br />
 
-        <div class="key-features">
-          <h2>Benefici</h2>
-          <ul>
-            <li>È ricco</li>
-            <li>È un figo</li>
-            <li>Fa bene</li>
-          </ul>
-        </div>
+        <label for="score">Punteggio (0/10):</label>
+        <input type="number" id="score" min="0" max="10" required /><br />
 
-        <h2>Recensioni degli utenti</h2>
-        <div class="rating">
-          <p>giovanni buongiorno: (9/10)</p>
-          <p>mrbeast mi ha dato un biscotto e mi ha detto mangialo e mi sono ritrovato a casa sua e mi ha fatto giocare con lui
-
-          </p>
-        </div>
-        <br/>
-
-        <h2>Scrivi una recensione</h2>
-        <button id="openFormButton" onclick="toggleForm()">
-          Nuova Recensione
-        </button>
-
-        <form id="issueForm">
-          <label for="name">Nome:</label>
-          <input type="text" id="name" required /><br />
-
-          <label for="score">Punteggio (0/10):</label>
-          <input type="number" id="score" min="0" max="10" required /><br />
-
-          <label for="review">Recensione:</label>
-          <textarea id="review" rows="4" required></textarea><br />
+        <label for="review">Recensione:</label>
+        <textarea id="review" rows="4" required></textarea><br />
 
         <button
           type="button"
@@ -74,52 +82,53 @@
         >
           Invia Recensione
         </button>
-        </form>
-      </div>
+      </form>
     </div>
-
-    <script>
-    let delayActive = false;
-
+    <h1 class="rating-title">Recensioni degli utenti</h1>
+    <div class="rating">
+      <p>giovanni buongiorno: (9/10)</p>
+      <p>mrbeast mi ha dato un biscotto e mi ha detto mangialo e mi sono ritrovato a casa sua e mi ha fatto giocare con lui
+      </p>
+    </div>
+    <br/>
+  </body>
+  <script>
     function toggleForm() {
       var form = document.getElementById("issueForm");
       form.style.display = form.style.display === "none" ? "block" : "none";
     }
 
-      // Base64 decode function
-      function base64Decode(str) {
-        return atob(str);
-      }
+    // Base64 decode function
+    function base64Decode(str) {
+      return atob(str);
+    }
 
-      // Function to create a GitHub issue with encoded Authorization token
-      function createGitHubIssue() {
-        const name = document.getElementById("name").value;
-        const score = document.getElementById("score").value;
-        const review = document.getElementById("review").value;
+    // Function to create a GitHub issue with encoded Authorization token
+    function createGitHubIssue() {
+      const name = document.getElementById("name").value;
+      const score = document.getElementById("score").value;
+      const review = document.getElementById("review").value;
 
-        // Encoded token
-        const encodedToken =
-          "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
+      // Encoded token
+      const encodedToken =
+        "Z2hwX0xBOUN4ZWxqQUNiRmVYR2dvakhOc1FhTVZOS0xlTzNKYkdMSQo=";
 
-        // Decode the token
-        const decodedToken = base64Decode(encodedToken);
+      // Decode the token
+      const decodedToken = base64Decode(encodedToken);
 
-        const issueData = {
-          title: "Recensione MrBeast",
-          body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
-        };
+      const issueData = {
+        title: "Recensione Mr Beast",
+        body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
+      };
 
-        fetch(
-          "https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues",
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${decodedToken}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(issueData),
-          }
-        )
+      fetch("https://api.github.com/repos/Enricozon-Team/enricozon2.0/issues", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${decodedToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(issueData),
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
@@ -157,6 +166,5 @@
         delayActive = false;
       }, 60000); // 1 minute delay
     }
-    </script>
-  </body>
+  </script>
 </html>

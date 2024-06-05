@@ -47,14 +47,14 @@
 
     <div class="container">
       <div class="product-image">
-        <img src="paletta.jpg" alt="Product Image" />
+        <img src="roadnera.jpg" alt="Product Image" />
       </div>
 
       <div class="product-info">
-        <h1 class="product-title">Paletta per le mosche</h1>
-        <p class="product-price">$11.00</p>
+        <h1 class="product-title">Lamborghini Veneno Roadster</h1>
+        <p class="product-price">$5 Mln</p>
         <p class="product-description">
-          Paletta per le mosche, per ammazzare quelle mosche di merda che rompono sempre le palle.
+          Lamorghini Veneno Roadster, macchina edizione limitata
         </p>
         <a href="https://enricozon.mom/buy/buy.html" class="cart-btn">Buy</a>
       </div>
@@ -84,14 +84,12 @@
         </button>
       </form>
     </div>
-    <h1 class="rating-title">Recensioni degli utenti</h1>
-    <div class="rating">
-      <p>pasquale romano: (10/10)</p>
-      <p>uccide ogni insetto, molto bella</p>
-    </div>
-    <br/>
+    <h2 class="new-r">Recensioni degli utenti</h2>
+    <h5 class="new-r">Aiutaci ad aggiungere recensioni facendone tu una.</h5>
   </body>
   <script>
+    let delayActive = false;
+
     function toggleForm() {
       var form = document.getElementById("issueForm");
       form.style.display = form.style.display === "none" ? "block" : "none";
@@ -116,7 +114,7 @@
       const decodedToken = base64Decode(encodedToken);
 
       const issueData = {
-        title: "Recensione Paletta per le mosche",
+        title: "Recensione Lamborghini Veneno Roadster",
         body: `Nome: ${name}\nPunteggio: ${score}/10\nRecensione: ${review}`,
       };
 
