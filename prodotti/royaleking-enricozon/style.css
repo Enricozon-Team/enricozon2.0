@@ -1,169 +1,201 @@
+/* Stili per il desktop */
 body {
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-
-  background: url(https://www.enricozon.mom/royale/crown.png);
-  width: 100%;
-  height: 100vh;
-
-  justify-content: center;
-  animation: animazione 100s linear infinite;
-}
-
-@keyframes animazione {
-  100% {
-    background-position: 0px -3000px;
-  }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #202020;
+    color: white;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 header img {
-  max-height: 50px;
+    max-height: 50px;
 }
 
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: 50px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
 }
 
 .product-image {
-  flex: 1 1 50%;
-  max-width: 50%;
-  margin-right: -500px; /* Adjust the margin to move it more to the right */
+    flex: 1;
+    margin-right: 50px;
+}
+
+.product-info {
+    flex: 2;
 }
 
 .product-image img {
-  width: 100%;
-  max-width: 450px;
-  height: 500px;
-  object-fit: cover;
+    width: 100%;
 }
 
-.product-details {
-  flex: 1 1 40%;
-  max-width: 40%;
-  padding: 20px;
+.product-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-.buy-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-top: 20px;
+.product-price {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.product-description,
-.key-features,
-.customer-reviews,
-.faqs {
-  margin-top: 20px;
+.product-description {
+    margin-bottom: 20px;
 }
 
-.img1 {
-  height: 550px;
-  width: 500px;
+.cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-@media screen and (max-width: 768px) {
-  .product-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-image,
-  .product-details {
-    flex: 1 1 100%;
-    margin-right: 0;
-    max-width: 100%;
-  }
+.cart-btn:hover {
+    background-color: #3e8e41;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-button {
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+.rating {
+    background-color: rgba(0, 0, 0, 0.292);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    max-width: 80%;
+    margin-left: 160px;
+}
+
+.rating-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-left: 165px;
 }
 
 #openFormButton {
-  background-color: #4caf50;
-  color: white;
+    background-color: #4caf50;
+    color: white;
 }
 
 #openFormButton:hover,
 #openFormButton:focus {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
 #issueForm {
-  display: none;
-  background-color: rgba(0, 0, 0, 0.292);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  max-width: 80%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.292);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 980px;
+    max-width: 80%;
 }
 
 label {
-  display: block;
-  margin-bottom: 8px;
-  color: #ffffff;
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
 }
 
 input,
 textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 button[type="button"] {
-  background-color: #007bff;
-  color: white;
+    background-color: #007bff;
+    color: white;
 }
 
 button[type="button"]:hover,
 button[type="button"]:focus {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
-.rating {
-  background-color: rgba(0, 0, 0, 0.292);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  max-width: 80%;
+button {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.eslisir {
-  margin-top: -36px;
-  margin-bottom: -9px;
-  width: 30px;
-  height: 30px;
+.new-r {
+    margin-left: 165px;
 }
+
+/* Stili per il mobile */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    
+   
+
+    .new-r {
+        padding: 1px; /* Riduci il padding */
+        margin-left: 5%;
+    }
+    label {
+        font-size: 14px; /* Riduci la dimensione del font per i label */
+    }
+
+    .rating-title{
+        padding: 15px; /* Riduci il padding */
+        margin-left: 5%;
+    }
+
+    .rating {
+        max-width: 80%; /* Riduci la larghezza massima */
+        margin-left: 5%; /* Allinea a destra */
+        margin-right: auto; /* Allinea a sinistra */
+        padding: 10px; /* Riduci il padding */
+        word-wrap: break-word;
+    }
+
+    .rating-title {
+        margin-left: auto; /* Allinea a destra */
+        margin-right: auto; /* Allinea a sinistra */
+    }
+   }
+
+   .elisir {
+    margin-top: -36px;
+    margin-bottom: -9px;
+    width: 30px;
+    height: 30px;
+  }
