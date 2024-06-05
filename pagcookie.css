@@ -139,3 +139,10 @@ li{
 h1{
     color: #fff;
 }
+.img4 {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    top: 2%;
+    left: 26%;
+  }
