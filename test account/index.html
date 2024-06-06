@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creazione Account con Firebase</title>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+</head>
+<body>
+  <!-- Form di registrazione -->
+  <div>
+    <h2>Registrazione</h2>
+    <form id="signup-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Registrati</button>
+    </form>
+  </div>
+
+  <script>
+    // Configurazione Firebase
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Inizializzare Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Funzione di registrazione
+    const signupForm = document.getElementById('signup-form');
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Registrazione riuscita
+          const user = userCredential.user;
+          console.log('Registrazione riuscita:', user);
+        })
+        .catch((error) => {
+          // Gestione degli errori
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error('Errore durante la registrazione:', errorCode, errorMessage);
+        });
+    });
+  </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCeRsaGEtyf4FKI6RppvrSja6PQuyh0ZVc",
+      authDomain: "account-test-2a183.firebaseapp.com",
+      projectId: "account-test-2a183",
+      storageBucket: "account-test-2a183.appspot.com",
+      messagingSenderId: "579629042322",
+      appId: "1:579629042322:web:207ad3c2bb2d8870ff744b",
+      measurementId: "G-WYNTLM8W3T"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>
