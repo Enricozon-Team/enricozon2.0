@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>Creazione Account con Firebase</title>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 </head>
 <body>
   <!-- Form di registrazione -->
@@ -16,42 +14,7 @@
     </form>
   </div>
 
-  <script>
-    // Configurazione Firebase
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
-    // Inizializzare Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    // Funzione di registrazione
-    const signupForm = document.getElementById('signup-form');
-    signupForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Registrazione riuscita
-          const user = userCredential.user;
-          console.log('Registrazione riuscita:', user);
-        })
-        .catch((error) => {
-          // Gestione degli errori
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Errore durante la registrazione:', errorCode, errorMessage);
-        });
-    });
-  </script>
+  
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
