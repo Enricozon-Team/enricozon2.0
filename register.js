@@ -1,9 +1,13 @@
- // Import the functions you need from the SDKs you need
- import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
- // TODO: Add SDKs for Firebase products that you want to use
- // https://firebase.google.com/docs/web/setup#available-libraries
 
- // Your web app's Firebase configuration
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+
+
+
+ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+ 
  const firebaseConfig = {
    apiKey: "AIzaSyBHk3SC7rMD5eOl13FDQxGZMNJNTfYScBs",
    authDomain: "loginnnn-a44e7.firebaseapp.com",
@@ -25,6 +29,15 @@
  const submit = document.getElementById('submit');
  submit.addEventListener("click", function (event) {
   event.preventDefault()
-  alert(5)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
  }
 )
