@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <a class="close-button" href="https://enricozon.mom">
+          <i class="fa-solid fa-xmark"></i>
+        </a>
+        <a class="logo" href="#">
+          <i class="fa-brands fa-ano"></i>
+        </a>
+      </div>
+
+      <div class="content">
+        <h1>Log in to Enricozon</h1>
+
+        <div class="action-buttons">
+          <button class="primary-button sign-in-button">
+            <object data="./google.svg"></object>
+            <span>Sign in with Google</span>
+          </button>
+          <button class="primary-button sign-in-button">
+            <object data="./apple.svg"></object>
+            <span>Sign in with Apple</span>
+          </button>
+        </div>
+
+        <div class="divider">
+          <p>or</p>
+        </div>
+
+        <div class="email-log-in">
+          <input type="text" id="log-in" placeholder="Email">
+          <label for="log-in">Phone, email or username</label>
+        </div>
+        <br>
+        <div class="email-log-in">
+          <input type="password" id="log-in" placeholder="Email">
+          <label for="log-in">Password</label>
+        </div>
+
+        <div class="action-buttons">
+          <button class="primary-button">Next</button>
+          <button class="secondary-button">Forgot Password?</button>
+        </div>
+      </div>
+      <div class="sign-up">
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+      </div>
+    </div>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAJ-pvBPQYw8273Wwfn7YzI5aST2YDHWow",
+        authDomain: "gfok-a473d.firebaseapp.com",
+        projectId: "gfok-a473d",
+        storageBucket: "gfok-a473d.appspot.com",
+        messagingSenderId: "198634630208",
+        appId: "1:198634630208:web:18b761ac613e026d0303a5",
+        measurementId: "G-WTPVNNZS2L"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
