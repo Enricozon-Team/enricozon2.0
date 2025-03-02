@@ -1,24 +1,7 @@
-            - name: generate-sitemap
-  # You may pin to the exact commit or the version.
-  # uses: cicirello/generate-sitemap@63643192a20862580b2e628ce0e553a8907e9ee9
-  uses: cicirello/generate-sitemap@v1.10.0
-  with:
-    # The path to the root of the website
-    path-to-root: # optional, default is .
-    # The url of your webpage
-    base-url-path: # optional, default is https://web.address.of.your.nifty.website/
-    # Indicates whether to include html files in the sitemap.
-    include-html: # optional, default is true
-    # Indicates whether to include pdf files in the sitemap.
-    include-pdf: # optional, default is true
-    # Indicates if sitemap should be formatted in xml.
-    sitemap-format: # optional, default is xml
-    # Space separated list of additional file extensions to include in sitemap.
-    additional-extensions: # optional, default is 
-    # Enables dropping .html from urls in sitemap.
-    drop-html-extension: # optional
-    # Pass true to include only the date without the time in XML sitemaps; and false to include full date and time.
-    date-only: # optional
-    # Space separated list of paths to exclude from the sitemap.
-    exclude-paths: # optional, default is 
-          
+- name: generate-sitemap
+  uses: cicirello/generate-sitemap@v1.10.1
+      steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
