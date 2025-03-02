@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /ai/
+Disallow: /register/
+Sitemap: https://ez.anozon.it/sitemap.xml
