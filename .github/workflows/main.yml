@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  sitemap-job:
+  sitemap_job:
     runs-on: ubuntu-latest
     name: Generate a sitemap
 
