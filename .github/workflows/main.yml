@@ -1,18 +1,28 @@
-name: Generate Sitemap
+name: Generate sitemap
 
 on:
   push:
-    branches:
-      - main  # Adjust as needed
+    branches: [ main ]
 
 jobs:
-  generate-sitemap:
+  sitemap-job:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    name: Generate a sitemap
 
-      - name: Generate Sitemap
-        uses: cicirello/generate-sitemap@v1.10.1
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
+
+    - name: Generate the sitemap
+      id: sitemap
+      uses: cicirello/generate-sitemap@v1
+      with:
+        base-url-path: https://ez.anozon.it/
+
+    - name: Output stats
+      run: |
+        echo "sitemap-path = ${{ steps.sitemap.outputs.sitemap-path }}"
+        echo "url-count = ${{ steps.sitemap.outputs.url-count }}"
+        echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
