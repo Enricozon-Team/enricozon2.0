@@ -39,12 +39,11 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7.0.8
       with:
-        title: "Automated sitemap update"
+        title: "Cambiamenti alla sitemap"
         body: > 
-          Automated changes. Sitemap updated by 
-          the [generate-sitemap](https://github.com/cicirello/generate-sitemap) 
-          GitHub action.  
-        commit-message: "Automated sitemap update."
+          Cambiamenti alla sitemap automatizzati. 
+          Approvare il PR solo se aggiunte nuove pagine, altrimenti rifiutare ed eliminare. 
+        commit-message: "Cambiamenti alla sitemap."
         author: GitHub Actions <actions@github.com>
         committer: GitHub Actions <actions@github.com>
         branch: create-pull-request/sitemap
