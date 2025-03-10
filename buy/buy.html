@@ -23,6 +23,7 @@
         <p class="p1" id="currentLocation">Fetching location...</p>
         
         <div class="share-buttons">
+            <div class="share-button" onclick="shareMenu()"><i class="far fa-share-square"></i></div>
             <div class="share-button" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></div>
             <div class="share-button" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></div>
             
@@ -42,8 +43,21 @@
     }
 
     function shareOnWhatsApp() {
-            window.open('whatsapp://send?text=' + encodeURIComponent('Acquista subito un prodotto su questo meraviglioso shop online! https://ez.anozon.it'));
+            share("Acquista subito un prodotto su questo meraviglioso shop online! https://ez.anozon.it");
     }
+
+    const shareData = {
+        text: "Acquista subito un prodotto su questo meraviglioso shop online! https://ez.anozon.it",
+    };
+
+    async function shareMenu() {
+        try {
+            await navigator.share(shareData);
+            console.log("Text shared successfully");
+        } catch (err) {
+            console.log(`Error: ${err}`);
+        }
+    };
 
     fetch('https://ipinfo.io/json')
         .then(response => response.json())
