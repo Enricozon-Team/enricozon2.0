@@ -89,6 +89,8 @@
     <h5 class="new-r">Aiutaci ad aggiungere recensioni facendone tu una.</h5>
   </body>
   <script>
+    let delayActive = false;
+    
     function toggleForm() {
       var form = document.getElementById("issueForm");
       form.style.display = form.style.display === "none" ? "block" : "none";
