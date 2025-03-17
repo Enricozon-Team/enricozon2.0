@@ -92,30 +92,17 @@
     }
         
     function sendToDiscordWebhook(message) {
-
-        const encodedToken =
-          "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM0Nzk2MDc4NDQwNzQ5NDcxNi9fUy1EbGsybnhibDVhT3NfYUtXUGZFSW9MeHJCdWdXQ2dBc1BkLVZ5b0l6X2Zsd1FyMlRqNnpSV1dEY0xKQVV6TGJ4Zw==";
-        
-        const webhookUrl = base64Decode(encodedToken);
-
-        fetch(webhookUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                content: message,
-            }),
-        })
-        .then(response => {
-            if (!response.ok) {
-                console.error('Failed to send message to Discord webhook:', response.status, response.statusText);
-            }
-        })
-        .catch(error => {
-            console.error('Error sending message to Discord webhook:', error);
-        });
-    }
+        fetch("https://ez-webhook.vercel.app/api/send-message", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Origin": "http://localhost:3000"},
+                body: JSON.stringify({
+                    message: message,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error("Error:", error));
+        }
 </script>
 
 </body>
