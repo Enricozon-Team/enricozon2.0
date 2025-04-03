@@ -13,7 +13,7 @@
     <link rel="apple-touch-startup-image" href="https://ez.anozon.it/immagini/loghi/logo.jpeg"/>
     <link rel="stylesheet" href="tag.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="cookie.css" />
+    <!-- <link rel="stylesheet" href="cookie.css" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"/>
     <meta property="og:locale" content="it_IT">
     <meta property="og:title" content="Enricozon" />
@@ -29,10 +29,11 @@
     <meta name="apple-mobile-web-app-title" content="Enricozon" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="google-site-verification" content="yHWizVxPBLcrVO_0-JCj48DyCl85vp4myUZ2lvPyeVg" />
+    <!-- <link rel="stylesheet" href="ncookie.css"> -->
   </head>
 
   <body>
-    <div id="cookie-popup">
+    <!-- <div id="cookie-popup">
       <p>
         Questo sito web utilizza i cookie per assicurarti la migliore esperienza
         possibile.
@@ -40,7 +41,7 @@
       <button onclick="accettaCookie()">Accetta</button>
       <button class="decline" onclick="rifiutaCookie()">Rifiuta</button>
       <button id="info-button" onclick="vaiAllaPaginaInfo()">Info</button>
-    </div>
+    </div> -->
 
     <button class="open-btn" onclick="openNav()">☰</button>
 
@@ -765,8 +766,27 @@
     </div>
 
     <script src="main.js"></script>
-    <script src="cookie.js"></script>
+    <!-- <script src="cookie.js"></script> -->
+    <script src="t8muxov4.js" defer></script>
 
     <footer>© Enricozon 2023-2025</footer>
+    <!-- <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/ez-consent@^1/dist/ez-consent.min.js"
+      defer
+      async
+      onload="
+        ez_consent.init({
+            privacy_url: '/cookies.html',
+            texts: {
+                buttons: {
+                    ok: 'OK',
+                    more: 'More',
+                },
+            },
+        });
+    "
+></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookie-banner/1.2.0/cookiebanner.min.js"></script> -->
   </body>
 </html>

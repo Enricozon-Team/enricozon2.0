@@ -1,0 +1,80 @@
+{
+    "consentModal": {
+      "title": "Informativa Cookie",
+      "description": "Questo sito web utilizza i cookie per assicurarti la migliore esperienza possibile.",
+      "acceptAllBtn": "Accetta Tutto",
+      "acceptNecessaryBtn": "Accetta Necessari",
+      "closeIconLabel": null,
+      "showPreferencesBtn": "Gestisci Preferenze",
+      "footer": "\u003Ca href=\"https://ez.anozon.it/cookies.html\" target=\"_blank\"\u003ECookie Policy\u003C/a\u003E"
+    },
+    "preferencesModal": {
+      "title": "Preferenze",
+      "acceptAllBtn": "Accetta Tutto",
+      "acceptNecessaryBtn": "Accetta Necessari",
+      "savePreferencesBtn": "Salva Preferenze",
+      "closeIconLabel": "Close",
+      "sections": [
+        {
+          "title": "Utilizzo Cookie",
+          "description": "Utilizziamo i cookie per garantire le funzionalit&agrave; basiche del sito e per migliorare la tua esperienza online. Puoi scegliere per ogni categoria se accettarla o rifiutarla quando vuoi."
+        },
+        {
+          "title": "Essenziali",
+          "description": "I cookie essenziali sono necessari per funzioni che sono essenziali per l&#039;utilizzo del nostro sito o servizi, come login nell&#039;account, autenticazione e sicurezza del sito. ",
+          "linkedCategory": "essential",
+          "cookieTable": {
+            "headers": {
+              "name": "Name",
+              "description": "Description",
+              "expiration": "Expiration"
+            },
+            "body": []
+          }
+        },
+        {
+          "title": "Analitica",
+          "description": "I cookie di analitica ci consentono di analizzare le vostre visite ed azioni cos&igrave; che possiamo rendere il nostro servizio migliore. ",
+          "linkedCategory": "analytics",
+          "cookieTable": {
+            "headers": {
+              "name": "Name",
+              "description": "Description",
+              "expiration": "Expiration"
+            },
+            "body": []
+          }
+        },
+        {
+          "title": "Marketing",
+          "description": "I cookie di marketing permettono di mostrarti contenuti di social media pi&ugrave; rilevanti ed annunci nel nostro sito e in altre piattaforme. ",
+          "linkedCategory": "marketing",
+          "cookieTable": {
+            "headers": {
+              "name": "Name",
+              "description": "Description",
+              "expiration": "Expiration"
+            },
+            "body": []
+          }
+        },
+        {
+          "title": "Personalizzazione",
+          "description": "I cookie di personalizzazione ci aiutano a personalizzare l&#039;esperienza utente in base alle tue preferenze. Si ricordano delle scelte che fai, come lingua o regione, e forniscono funzionalit&agrave; migliorate.",
+          "linkedCategory": "personalization",
+          "cookieTable": {
+            "headers": {
+              "name": "Name",
+              "description": "Description",
+              "expiration": "Expiration"
+            },
+            "body": []
+          }
+        },
+        {
+          "title": "Maggiori informazioni",
+          "description": "Per qualsiasi domanda in relazione alla nostra informativa sui cookie e sulle tue scelte, per favore contattaci."
+        }
+      ]
+    }
+  }
